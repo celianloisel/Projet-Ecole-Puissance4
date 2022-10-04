@@ -19,7 +19,7 @@ font-family: 'Staatliches', cursive;
 
 /*-------------------------------PROPRIETES GENERALES-------------------------------*/
 
-*{
+* {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -32,15 +32,17 @@ body {
     overflow-x: hidden;
     background-color: rgb(16, 14, 46);
 
-/* FOOTER */
+}
 
+
+/*-------------------------------FOOTER-------------------------------*/
 
 footer {
     padding-top: 75px;
     background-color: #0D0B26;
     font-family: Arial, Helvetica, sans-serif;
 
-    color:darkgray;
+    color: darkgray;
 }
 
 .footer {
@@ -111,15 +113,16 @@ i {
 .power_of_memory_footer {
     display: flex;
     flex-direction: column;
-    color: orange;
+
 }
 
 .power_of_memory_liste {
-    list-style-type: square;
     list-style-position: inside;
 }
 
 .li2 {
+    color: orange;  
+    list-style-type: square;
     margin-bottom: 20px;
 }
 
