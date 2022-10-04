@@ -1,9 +1,35 @@
-footer {
-    background-color: #0D0B26;
-    font-family: Arial, Helvetica, sans-serif;
+/*-------------------------------FONTS INITIALISATION-------------------------------*/
+
+/*commande pour importer plusieurs fonts depuis le site de google fonts sans installation*/
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Nabla&family=Oswald:wght@200;300;400;500;600;700&family=Passion+One:wght@400;700&family=Roboto+Condensed:wght@700&family=Roboto:wght@100;300;400;500;700;900&family=Secular+One&family=Staatliches&display=swap');
+
+/* NOM DES FONTS DISPONIBLES
+font-family: 'Anton', sans-serif;
+font-family: 'Bebas Neue', cursive;
+font-family: 'Josefin Sans', sans-serif;
+font-family: 'Nabla', cursive;
+font-family: 'Oswald', sans-serif;
+font-family: 'Passion One', cursive;
+font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Condensed', sans-serif;
+font-family: 'Secular One', sans-serif;
+font-family: 'Staatliches', cursive;
+*/
+
+
+/*-------------------------------PROPRIETES GENERALES-------------------------------*/
+
+*{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: aliceblue;
+    font-family: "roboto", Arial, Helvetica, sans-serif;
 }
 
-.titre_footer {
-    color: #FFFFFF;
+body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background-color: rgb(16, 14, 46);
 }
 
