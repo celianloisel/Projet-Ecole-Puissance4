@@ -37,6 +37,10 @@ body {
     box-sizing: border-box;
 }
 .bannière{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background-color: aqua;
     width: 100vw;
     height: 35vh;
@@ -46,16 +50,24 @@ body {
 
 
 }
+
+.bannière h1 {
+
+    font-style: 'Roboto', sans-serif;
+    font-size: 50px;
+    color: #0f0f2e;
+}
 body {
     background: #0f0f2e;
 }
 .login-box{
-    position: absolute;
-    top: 20%;
-    left: 50%;
+    margin: auto;
+
+    margin-top: 100px;
+    margin-bottom: 100px;
+
     width: 400px;
     padding: 40px;
-    transform: translate(-50%, 0%);
     background: #161646;
     border-radius: 10px;
     box-shadow: 3px 3px 40px rgba(62, 0, 104, 0.521);
@@ -138,3 +150,4 @@ body {
 #register a{
     color: #8F7CEC;
     text-decoration: none;
+}
