@@ -32,3 +32,109 @@ body {
     overflow-x: hidden;
     background-color: rgb(16, 14, 46);
 }
+  .login-box{
+    box-sizing: border-box;
+}
+.bannière{
+    background-color: aqua;
+    width: 100vw;
+    height: 35vh;
+    background: url(../images/521564.jpeg) 
+    no-repeat center / cover;
+    box-shadow: 0px 50px 100px rgba(44, 0, 116, 0.445);
+
+
+}
+body {
+    background: #0f0f2e;
+}
+.login-box{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, 0%);
+    background: #161646;
+    border-radius: 10px;
+    box-shadow: 3px 3px 40px rgba(62, 0, 104, 0.521);
+}
+.login-box h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+.login-box .user-box input{
+    position: relative;
+    width: 100%;
+    padding: 10% 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+.login-box .user-box label{
+    position: relative;
+    left: 0;
+    top: 60px;
+    padding: 10px 0;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+.login-box .user-box input :focus label
+.login-box .user-box input :valid label{
+    top: -85px;
+    left: 0;
+    color: #8F7CEC;
+    font-size: 12px;
+}
+#créer-le-compte{
+
+    padding: 10%;
+    color:#fff;
+    font-size: 12px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    letter-spacing: 1px;
+    border: 1px solid #8F7CEC;
+    margin: auto;
+}
+#créer-le-compte:hover{
+    background: #fff; /* blanc en hexadécimal*/
+    color:#8F7CEC;
+    border-radius: 5px;
+}
+.button-form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+#login{
+    display: flex;
+    font-size: 14px;
+    text-decoration: none;
+    color: #CBBDDB;
+    margin-top: 10%;
+    width: 100%;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#ss {
+    margin: 30px;
+}
+
+#login a{
+    color: #8F7CEC;
+    text-decoration: none;
+=======
