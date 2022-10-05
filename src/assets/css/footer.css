@@ -19,7 +19,7 @@ font-family: 'Staatliches', cursive;
 
 /*-------------------------------PROPRIETES GENERALES-------------------------------*/
 
-*{
+* {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -31,5 +31,126 @@ body {
     scroll-behavior: smooth;
     overflow-x: hidden;
     background-color: rgb(16, 14, 46);
+
 }
 
+
+/*-------------------------------FOOTER-------------------------------*/
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    padding-top: 75px;
+
+    background-color: #0D0B26;
+
+    font-family: 'Roboto', sans-serif;
+}
+
+footer h1 {
+    margin-bottom: 25px;
+
+    color: #FFFFFF;
+    font-size: 25px;
+}
+
+footer h2 {
+    color: darkgray;
+}
+
+
+/*-------------------------------Information-------------------------------*/
+
+.information_liste_footer {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    
+    margin-bottom: 25px;
+    
+    list-style-type: none;
+}
+
+.information_liste_footer li {
+    margin-top: 20px;
+    
+    color: darkgray;
+}
+
+.information_liste_footer li span {
+    color: orange;
+    font-weight: 700;
+}
+
+.icon_liste_footer {
+    display: flex;
+    justify-content: start;
+}
+
+.icon_liste_footer a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-right: 7.5px;
+    padding: 5px;
+    height: 25px;
+    width: 25px;
+    
+    border-radius: 10%;
+    
+    background-color: orange;
+    
+    font-size: 15px;
+    color: white;
+    
+    list-style-type: none;
+}
+
+.icon_liste_footer a i {
+    background-color: orange;
+    
+    color: white;
+}
+
+
+/*-------------------------------Copyright-------------------------------*/
+
+.copyright_footer {
+    margin-top: 100px;
+    margin-bottom: 25px;
+
+    color: darkgray;
+}
+
+
+/*-------------------------------Power of Memory-------------------------------*/
+
+.power_footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.power_liste {
+    list-style-position: inside;
+}
+
+.power_liste li {
+    margin-bottom: 20px;
+    
+    color: orange;
+    
+    list-style-type: square;
+}
+
+.power_liste li a {
+    text-decoration: none;
+    color: darkgray;
+}
+
+.power_liste li a:hover {
+    color: orange;
+}
