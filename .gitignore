@@ -1,5 +1,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos
+# Created by httpswww.toptal.comdevelopersgitignoreapimacos
+# Edit at httpswww.toptal.comdevelopersgitignoretemplates=macos
 
 ### macOS ###
 # General
@@ -8,11 +10,13 @@
 .LSOverride
 
 # Icon must end with two \r
+# Icon must end with two r
 Icon
 
 
 # Thumbnails
 ._*
+._
 
 # Files that might appear in the root of a volume
 .DocumentRevisions-V100
@@ -35,3 +39,6 @@ Temporary Items
 *.icloud
 
 # End of https://www.toptal.com/developers/gitignore/api/macos
+.icloud
+
+# End of httpswww.toptal.comdevelopersgitignoreapimacos
