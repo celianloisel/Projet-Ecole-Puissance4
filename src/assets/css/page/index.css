@@ -28,9 +28,12 @@ font-family: 'Staatliches', cursive;
     font-family: "roboto", Arial, Helvetica, sans-serif;
 }
 
-body {
-    scroll-behavior: smooth;
+html{
     overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
     background-color: rgb(16, 14, 46);
 }
 
@@ -39,7 +42,7 @@ body {
 
 #hero {
     background-color: rgb(9, 3, 48);
-    background: linear-gradient(rgba(0, 0, 0, 0.472), rgba(0, 0, 0, 0.524)) ,url(../../images/index/GettyImages-1345532226.jpg) no-repeat center / cover ;
+    background: linear-gradient(rgba(17, 0, 30, 0.472), rgba(17, 0, 30, 0.624)) ,url(../../images/index/hero_illustration_gamer.jpg) no-repeat center / cover ;
     height: 90vh;
     width: 100%;
 
@@ -50,32 +53,39 @@ body {
 }
 
 #hero h1 {
-    font-family: 'Roboto Condensed';
-    font-size: clamp(1rem, 7vw, 6rem);
-    font-weight: 700;
-    width: 60%;
+    font-size: clamp(2rem, 7vw, 5rem);
+    font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
+    font-weight: 700; 
     text-align: center;
+    line-height: 100%;
+
+    width: 70%;
+    max-width: 700px;
+    min-width: 200px;
 }
 
 #hero h3{
-    font-size: clamp(0.8rem, 2vw, 1rem);
+    font-size: clamp(0.5rem, 1.5vw, 1rem);
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     font-weight: 400;
-    margin-top: 1rem;
     text-align: center;
     color: rgb(176, 176, 176);
+    
+    margin-top: 1rem;
 }
 
 #hero a {
     background-color: orange;
     border-radius: 2%;
     transition: all .2s ease-in-out;
+
     text-decoration: none;
     color: aliceblue;
-    padding: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    font-weight: 500;
 
+    padding: 0.9rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
     margin-top: 2rem;
 }
 
