@@ -19,7 +19,7 @@ font-family: 'Staatliches', cursive;
 
 /*-------------------------------PROPRIETES GENERALES-------------------------------*/
 
-*{
+* {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -33,10 +33,12 @@ body {
     background-color: rgb(16, 14, 46);
 
 }
-  .login-box{
+
+.login-box {
     box-sizing: border-box;
 }
-.bannière{
+
+.bannière {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,11 +46,8 @@ body {
     background-color: aqua;
     width: 100vw;
     height: 35vh;
-    background: url(../../images/521564.jpeg) 
-    no-repeat center / cover;
+    background: url(../../images/521564.jpeg) no-repeat center / cover;
     box-shadow: 0px 50px 100px rgba(44, 0, 116, 0.445);
-
-
 }
 
 .bannière h1 {
@@ -57,10 +56,12 @@ body {
     font-size: 50px;
     color: #0f0f2e;
 }
+
 body {
     background: #0f0f2e;
 }
-.login-box{
+
+.login-box {
     margin: auto;
 
     margin-top: 100px;
@@ -72,13 +73,15 @@ body {
     border-radius: 10px;
     box-shadow: 3px 3px 40px rgba(62, 0, 104, 0.521);
 }
+
 .login-box h2 {
     margin: 0 0 30px;
     padding: 0;
     color: #fff;
     text-align: center;
 }
-.login-box .user-box input{
+
+.login-box .user-box input {
     position: relative;
     width: 100%;
     padding: 10% 0;
@@ -90,7 +93,8 @@ body {
     outline: none;
     background: transparent;
 }
-.login-box .user-box label{
+
+.login-box .user-box label {
     position: relative;
     left: 0;
     top: 60px;
@@ -99,17 +103,18 @@ body {
     pointer-events: none;
     transition: .5s;
 }
-.login-box .user-box input :focus label
-.login-box .user-box input :valid label{
+
+.login-box .user-box input :focus label .login-box .user-box input :valid label {
     top: -85px;
     left: 0;
     color: #8F7CEC;
     font-size: 12px;
 }
-#Connexion{
+
+#Connexion {
 
     padding: 10%;
-    color:#fff;
+    color: #fff;
     font-size: 12px;
     text-decoration: none;
     text-transform: uppercase;
@@ -119,17 +124,21 @@ body {
     border: 1px solid #8F7CEC;
     margin: auto;
 }
-#Connexion:hover{
-    background: #fff; /* blanc en hexadécimal*/
-    color:#8F7CEC;
+
+#Connexion:hover {
+    background: #fff;
+    /* blanc en hexadécimal*/
+    color: #8F7CEC;
     border-radius: 5px;
 }
-.button-form{
+
+.button-form {
     display: flex;
     flex-direction: column;
     margin-top: 25px;
 }
-#register{
+
+#register {
     display: flex;
     font-size: 14px;
     text-decoration: none;
@@ -147,7 +156,7 @@ body {
     margin: 30px;
 }
 
-#register a{
+#register a {
     color: #8F7CEC;
     text-decoration: none;
 }
