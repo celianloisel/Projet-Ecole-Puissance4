@@ -1,0 +1,141 @@
+.information{
+    display: flex;
+    height: 400px;
+    flex-direction: column;
+
+    background-color: #100E2E;
+    align-items: center;
+    justify-content: center;    
+}
+
+.info_img ul{
+    display: flex;
+}
+.info_img ul section li{
+    display: flex;
+    margin-top: 8%;
+    list-style-type: none;
+    font-size: 150%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.info_img section{
+    display: flex;
+    background-color: #0D0B26;
+    height: 300px;
+    width: 450px;
+    margin-right: 2.5%;
+    margin-top: 8%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+ 
+}
+
+
+#cercle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 280%; 
+    width: 35%;
+    height: 50%;
+    border-radius: 100%;
+    background: rgb(255, 137, 1);
+    
+}
+
+.formulaire{
+    display: flex;
+    height: 550px;
+    margin-top: 2.5%;
+    margin-left: 14.5%;
+}
+
+.bas{
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+.haut{
+    display: flex;
+    justify-content: space-between;   
+    
+}
+.haut input{
+    background-color: #272645;
+    height: 40px;
+    width: 298px;
+    border-radius: 5px;
+    
+    
+    
+    
+}
+.haut input#email{
+    display: flex;
+    margin-left: 5%;
+
+
+}
+
+
+
+.bas input{
+    background-color: #272645;
+    margin-top: 4%;
+    height: 40px;
+    width: 600px;
+    border-radius: 5px;
+    
+}
+
+textarea{
+    background-color: #272645;
+    margin-top: 4%;
+    height: 240px;
+    width: 600px;
+    border-radius: 5px;
+    max-width: 600px;
+    min-width: 600px;
+    min-height: 240px;
+     
+    max-height: 300px;
+    
+    border:none;   
+   
+}
+.envoyer button{
+    width: 90px;
+    height: 40px;
+    border-radius: 10%;
+    margin-top: 2.5%;
+    background-color: #FF8901;
+    
+}
+.envoyer button:hover{
+    background-color:rgb(0, 179, 255);
+    
+}
+input {
+    background-color:transparent;
+    border:none;
+       
+}
+.haut input::placeholder{
+    font-size: 110%;
+    padding: 10%;
+    
+}
+.bas ::placeholder{
+    font-size: 110%;
+    padding: 4.5%; 
+    
+}
+
+
+
+
+
+
+
