@@ -32,3 +32,93 @@ body {
     overflow-x: hidden;
     background-color: rgb(16, 14, 46);
 }
+
+
+/*-------------------------------TABLEAU DES SCORES-------------------------------*/
+
+#score_table_section{
+    background-color: rgb(17, 16, 47);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score_table {
+    border-collapse: collapse;
+    /* margin: 25px 0; */
+    font-size: 0.9em;
+    width: 90%;
+    /* min-width: 400px; */
+    border-radius: 5px 5px 0 0;
+    /* JE FAIS CA POUR POUVOIR ANIMER LES RANGER MAIS CA PEUT ETRE DANGEREUX POUR LE DEPASSEMENT DU TEXTE */
+    /* overflow: hidden; */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .score_table thead tr {
+    /* background-color: #009879; */
+    background-color: rgb(88, 15, 171);
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .score_table th,
+  .score_table td {
+    /* padding: 12px 15px; */
+    padding: 5px;
+  }
+  
+  .score_table tbody tr {
+    border-bottom: 1px solid #dddddd;
+
+    /* Necessaire pour pouvoir animer chaque ligne du tableau avec hover */
+    transition: all 0.3s ease-in-out;
+
+  }
+  
+
+  .score_table tbody tr:nth-of-type(odd) {
+    background-color: #20b1b6;
+  }
+
+
+  .score_table tbody tr:nth-of-type(even) {
+    /* background-color: #f3f3f3; */
+    background-color: #98d7d9;
+  }
+  
+  .score_table tbody tr:last-of-type {
+    /* border-bottom: 2px solid #009879; */
+    border-bottom: 10px solid rgb(88, 15, 171);
+  }
+  
+  .score_table tbody tr.active-row {
+    font-weight: bold;
+    /* color: #009879; */
+    background: linear-gradient(90deg, rgb(16, 3, 62) 0%, rgba(101,9,121,1) 35%, rgba(0,212,255,1) 100%);
+  }
+
+
+  .score_table tbody tr:hover {
+    transform: translateX(5%);
+    background-color: rgb(101, 23, 114);
+  }
+
+
+  /* Propriétés pour adapté le tableau au écrant très fin (galaxy fold, iphone 5C) */
+  @media all and (max-width : 350px){
+    .score_table {
+      font-size: 0.7em;
+      width: 95%;
+    }
+    
+    
+    .score_table td {
+      padding: 3px;
+    }
+    
+  }
