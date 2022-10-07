@@ -27,9 +27,12 @@ font-family: 'Staatliches', cursive;
     font-family: "roboto", Arial, Helvetica, sans-serif;
 }
 
-body {
-    scroll-behavior: smooth;
+html{
     overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
     background-color: rgb(16, 14, 46);
 }
 
@@ -60,7 +63,8 @@ body{
     margin: auto;
     margin-top: 100px;
     margin-bottom: 100px;
-    width: 400px;
+    width: 60vw;
+    max-width: 400px;
     padding: 40px;
     background: #161646;
     border-radius: 10px;
@@ -136,11 +140,13 @@ body{
     background: url(../../images/521564.jpeg)
     no-repeat center / cover;
     box-shadow: 0px 50px 100px rgba(44, 0, 116, 0.445);
+    text-align: center;
 }
 .bannière h1{
     font-style: 'Roboto', sans-serif;
     font-size: 50px;
     color: #0f0f2e;
+    
 }
 body{
     background: #0f0f2e;
@@ -149,7 +155,8 @@ body{
     margin: auto;
     margin-top: 100px;
     margin-bottom: 100px;
-    width: 400px;
+    width: 60vw;
+    max-width: 400px;
     padding: 40px;
     background: #161646;
     border-radius: 10px;

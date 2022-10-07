@@ -19,7 +19,7 @@ font-family: 'Staatliches', cursive;
 
 /*-------------------------------PROPRIETES GENERALES-------------------------------*/
 
-* {
+*{
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -27,10 +27,13 @@ font-family: 'Staatliches', cursive;
     font-family: "roboto", Arial, Helvetica, sans-serif;
 }
 
-body {
-    scroll-behavior: smooth;
+html{
     overflow-x: hidden;
-    position: relative;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(16, 14, 46);
 }
 
 
@@ -108,7 +111,7 @@ body {
 .send {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: end;
     flex-wrap: wrap;
 
     margin-left: 40%;
@@ -128,6 +131,7 @@ body {
 
     margin-top: 2%;
     margin-bottom: 2%;
+    margin-left: auto;
     padding: 5%;
 }
 

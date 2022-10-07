@@ -27,12 +27,35 @@ font-family: 'Staatliches', cursive;
     font-family: "roboto", Arial, Helvetica, sans-serif;
 }
 
-body {
-    scroll-behavior: smooth;
+html {
     overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
     background-color: rgb(16, 14, 46);
 }
 
+/*-------------------------------Banière-------------------------------*/
+
+.bannière {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: aqua;
+    width: 100vw;
+    height: 35vh;
+    background: url(../../images/521564.jpeg) no-repeat center / cover;
+    box-shadow: 0px 50px 100px rgba(44, 0, 116, 0.445);
+    margin-bottom: 6rem;
+}
+
+.bannière h1 {
+    font-style: 'Roboto', sans-serif;
+    font-size: 50px;
+    color: #0f0f2e;
+}
 
 /*-------------------------------Tableau-------------------------------*/
 

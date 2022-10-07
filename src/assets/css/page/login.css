@@ -19,7 +19,7 @@ font-family: 'Staatliches', cursive;
 
 /*-------------------------------PROPRIETES GENERALES-------------------------------*/
 
-* {
+*{
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -27,11 +27,13 @@ font-family: 'Staatliches', cursive;
     font-family: "roboto", Arial, Helvetica, sans-serif;
 }
 
-body {
-    scroll-behavior: smooth;
+html{
     overflow-x: hidden;
-    background-color: rgb(16, 14, 46);
+    scroll-behavior: smooth;
+}
 
+body {
+    background-color: rgb(16, 14, 46);
 }
 
 .login-box {
@@ -67,7 +69,8 @@ body {
     margin-top: 100px;
     margin-bottom: 100px;
 
-    width: 400px;
+    width: 70vw;
+    max-width: 500px;
     padding: 40px;
     background: #161646;
     border-radius: 10px;
