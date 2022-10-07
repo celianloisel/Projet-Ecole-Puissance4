@@ -45,7 +45,7 @@ body {
     height: 75vh;
     width: 20vw;
 
-    transform: translateY(510.5px);
+    transform: translateY(90.75%);
     transition: 500ms ease-in-out;
 }
 
