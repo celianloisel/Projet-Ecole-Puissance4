@@ -19,7 +19,7 @@ font-family: 'Staatliches', cursive;
 
 /*-------------------------------PROPRIETES GENERALES-------------------------------*/
 
-*{
+* {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -34,12 +34,13 @@ body {
 }
 
 
-/*-------------------------------PROPRIETES GENERALES-------------------------------*/
+/*-------------------------------Tableau-------------------------------*/
 
 table {
-    display: flex;
-    justify-content: center;
-
+    margin: 50px auto;
+    table-layout: fixed;
+    width: 95vh;
+    height: 95vh;
 }
 
 tbody {
@@ -48,5 +49,8 @@ tbody {
 }
 
 td {
+    background-image: url(../../images/theme/pokemon/393.png);
+    background-size: contain;
+    background-repeat: no-repeat;
     border: 2px solid #333;
 }
