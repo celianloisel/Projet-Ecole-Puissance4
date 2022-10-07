@@ -96,3 +96,365 @@ body {
 
 /*-------------------------------THEME-------------------------------*/
 
+#themes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.card{
+    width: 25vw;
+    min-width: 230px;
+   
+    /* Pour que quand le cadre apparaisse lors du hover ça soit propre */
+    transition: 0.2s ease-in-out;
+    padding: 1rem;
+    border-radius: 5%;
+
+    /* Lorsque le flex wrap se trigger, ça permet au cartes de ne pas se coller sur l'axe verticale */
+    margin-bottom: 5rem;
+}
+
+.card_image_01{
+    width: 100%;
+    height: 300px;
+    border-radius: 2%;
+    background-color: blueviolet; 
+    background: url(../../images/index/card_illust_01.jpeg) no-repeat center / cover;
+}
+
+.card_infos{
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.card_text{
+    /* background-color: rgba(165, 42, 42, 0.126); */
+    width: 80%;
+    text-overflow: clip;
+}
+
+.card_text h1 {
+    margin-bottom: 0.5rem;
+}
+
+.card_text p{
+    /* background-color: rgba(83, 43, 226, 0.244); */
+    width: 100%;
+    text-overflow: clip;
+    color: rgb(180, 196, 212);
+}
+
+.card_number{
+    color: rgb(87, 28, 215);
+    font-size: 3rem;
+    font-family: "Passion One",Arial, Helvetica, sans-serif;
+
+    margin-right: 1rem;
+}
+
+
+/* CODE SPECIFIQUE AUX IMAGES ALTERNATIVES DES AUTRE CARDS */
+
+.card_image_02{
+    width: 100%;
+    height: 300px;
+    border-radius: 2%;
+    background-color: blueviolet; 
+    background: url(../../images/index/card_illust_02.jpeg) no-repeat center / cover;
+}
+
+.card_image_03{
+    width: 100%;
+    height: 300px;
+    border-radius: 2%;
+    background-color: blueviolet; 
+    background: url(../../images/index/card_illust_03.jpeg) no-repeat center / cover;
+}
+
+
+
+/*Animation des cards*/
+.card:hover{
+    transform: scale(1.1);
+    background-color: rgb(26, 23, 77);
+    box-shadow: 5px 5px 20px rgba(53, 15, 134, 0.328);
+}
+
+
+
+
+
+/*-------------------------------STATISTIQUES-------------------------------*/
+
+#statistiques{
+    background-color: rgb(17, 16, 47);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    /* flex-wrap: wrap; Je n'utilise pas wrap pour cette section car je veux avoir un meilleur controle sur sa responsivness*/
+}
+
+.stats_illust{
+    width: 40vw;
+    min-width: 200px;
+    height: 22vw;
+    min-height: 110px;
+    /* sinon l'image est trop pret du bord par rapport au infos, j'ai supposé que vu qu'on occupe pas 100vw avec les deux section ça devant etre du a ça  */
+    /* !!! pour une raison OBSCUR depuis que j'ai mit ça , lorsque que la media querrie se trigger et qu'on passe en mode column , ça creer un decalage avec les cases info, et ce meme si je met un margin-left: 0; */
+    margin-left: 5vw; 
+
+    border-radius: 2%;
+    background-color: aqua;
+    /* background: url(../../images/index/stat_illust_2.jpeg) no-repeat center / cover; pour cette section je definie l'image direment en html*/
+    
+    /* ça, ça permet de centrer l'image de mon conteneur (equivalent du Css background center pour ma balise img) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Permet de ne pas avoir de debordement en heigth avec le width: 100% sur mon img et ainsi d'avoir un effet "cover" propre */
+    overflow: hidden;
+}
+
+.stats_illust img{
+    background-color: brown;
+
+    /* ça ducoup c'est l'équivalent de mon background "cover" en css sauf que de base ça peut créer des débordement de l'image */
+    width: 100%;
+    margin: auto;
+}
+
+.stats_infos{
+    display: flex;
+    flex-direction: row;
+    
+    /* c'est pas ça qui doit wrap c'est les deux partie principale (l'image d'un coté, l'ensemble de petit carré de l'autre) qui doivent wrap */
+    /* flex-wrap: wrap; */
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*----- PROPRIETE GENERALE POUR LES CASES -----*/
+/* Si J'ai séparé les case en "haut" et "bas" c'est pour pouvoir les regrouper en ligne et facilement les gerer avec flex  */
+.stats_infos_haut div, .stats_infos_bas div {
+    width: 20vw;
+    height: 10.5vw;
+
+    /* TAILLE MINIMUM POUR LES PETITES CASES */
+    min-width: 100px;
+    min-height: 50px;
+
+    border-radius: 2%;
+    display: flex;
+    /* Le column c'est pour que le nombre et le texte soit l'un sur l'autre */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+    
+    /* Gere l'espacement entre les cases */
+    /* Moitié moins 1 sur 2 pour eviter qu'on ai une cummulation de margin et que ce soit pas eguale  */
+    margin: 0.8rem 0.4rem 0.8rem 0.4rem;
+}
+
+
+/*----- PROPRIETE POUR LE TEXTE DES CASES -----*/
+.stats_nombre{ 
+    font-size: clamp(1.4rem, 3vw, 4rem); 
+}
+
+.stats_titre{
+    font-size: clamp(0.7rem, 2vw, 1.4rem);
+    font-weight: 500;
+}
+
+/*----- PROPRIETE SPECIFIQUES A CHAQUE CASE -----*/
+.stats_infos_section_1{
+    background-color: rgb(55, 36, 160);    
+}
+
+.stats_infos_section_2{
+    background-color: rgb(185, 28, 168);
+}
+
+.stats_infos_section_3{
+    background-color: rgb(24, 161, 95);
+}
+
+.stats_infos_section_4{
+    background-color: rgb(236, 145, 35);
+}
+
+
+/*----- PROPRIETE POUR RENTRE CETTE SECTION RESPONSIVE -----*/
+@media all and (max-width : 500px){
+    #statistiques{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .stats_illust {
+        margin-bottom: 2rem;
+        /* Retirer la compensation de marge par rapport aux infos puisqu'il ne sont plus sur la meme "ligne" */
+        margin-left: 0px;
+        /* CA REGLE LE PROBLEME DE DECALAGE EN MODE COLUMN AVEC LES INFOS mais ducoup c'est ultra bizarre, c'est comme si mon margin-left: 0; ne marchais pas ducoup */
+        margin-right: 5vw;
+    }
+}
+
+
+
+/*-------------------------------NOTRE EQUIPE-------------------------------*/
+
+/*----- TEXTE DE PRESENTATION -----*/
+#notre_equipe{
+    background-color: rgb(17, 16, 47);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.notre_equipe_text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Marge afin que le séparateur de texte ne colle pas aux carte membres */
+    margin-bottom: 1.5rem;
+}
+
+.notre_equipe_text h1{
+    font-size: clamp(2rem, 7vw, 3rem);
+    margin-bottom: 2rem;
+    text-align: center;
+
+    /* Ajout de margin pour ne pas que le texte colle au bord de la fenetre lorsque qu'on la rapetisse */
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.notre_equipe_text p{
+    font-size: clamp(0.7rem, 7vw, 1.5rem);
+    color: rgb(176, 176, 176);
+    text-align: center;
+    margin-bottom: 2rem;
+
+    /* Ajout de margin pour ne pas que le texte colle au bord de la fenetre lorsque qu'on la rapetisse */
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.text_separator_container{
+    width: 20vw;
+    min-width: 150px;
+}
+
+.text_separator_container img{
+    width: 100%;
+}
+
+
+/*----- CARTES DES MEMBRE DE L'EQUIPE -----*/
+
+.notre_equipe_cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.equipe_card{
+    background-color: rgb(8, 5, 35);
+    border-radius: 2%;
+    padding: 2rem;
+    padding-bottom: 4rem;
+    width: 20vw;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* Pour que ça ne se colle pas quand le wrap se fait trigger */
+    /* margin-bottom: 1.5rem; */
+
+    /* Pour ne pas que les carte se colle entre elles , aussi bien quand elle passe en mode column que quand elle se rapproche horizontalement entre elle lorsque la fenetre retrecie un peu */
+    margin: 2rem;
+
+    /* propriété afin que les animation lié aux carte soit smooooth */
+    transition: all 0.2s ease-in-out;
+}
+
+.profil_container{
+    width: 60%;
+    
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.profil_container img{
+    width: 100%;
+    border-radius: 100%;
+
+}
+
+.equipe_card h2{
+    font-size: clamp(1rem, 4vw, 1.8rem);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.equipe_card h3{
+    font-family: "Roboto",Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: clamp(0.7rem, 4vw, 1.4rem);
+    color: rgb(176, 176, 176);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.equipe_card ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.equipe_card li{
+    margin-left: 1rem;
+    margin-right: 1rem;
+       
+}
+
+.equipe_card a{
+    transform: scale(1.5);
+    transition: all 0.2s ease-in-out;
+}
+
+/*----- Animation disponible pour la section -----*/
+.equipe_card a:hover{
+    transform: scale(1.8);
+}
+
+.equipe_card:hover{
+    transform: scale(1.1);
+    background-color: rgb(26, 23, 77);
+    box-shadow: 5px 5px 20px rgba(53, 15, 134, 0.328);
+}
