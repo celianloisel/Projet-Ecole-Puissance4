@@ -18,10 +18,8 @@ CREATE TABLE IF NOT EXISTS `messages` (
     `user_id` INT,
     `message` TEXT,
     `date` DATETIME,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
 
-    CONSTRAINT FK_get_game_id_for_messages FOREIGN KEY ('game_id') REFERENCES games(id),
-    CONSTRAINT FK_get_users_id_for_messages FOREIGN KEY ('user_id') REFERENCES users(id)
-
-
+    CONSTRAINT FK_get_game_id_for_messages FOREIGN KEY (game_id) REFERENCES games(id),
+    CONSTRAINT FK_get_users_id_for_messages FOREIGN KEY (user_id) REFERENCES users(id)
 );
