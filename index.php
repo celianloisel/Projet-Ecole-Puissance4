@@ -6,18 +6,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/assets/css/page/index.css">
-    <link rel="stylesheet" href="./src/assets/css/header.css">
-    <link rel="stylesheet" href="./src/assets/css/footer.css">
-    <link rel="stylesheet" href="./src/assets/css/page/chat.css">
-    <title>Home</title>
+    <link rel="stylesheet" href="./assets/css/page/index.css">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/page/chat.css">
+    <title>HomeV2</title>
 
 </head>
 
 
 <body>
 
-    <header>
+    
+    <?php require "./view/header.inc.php"; ?>
+    <!-- <header>
         <nav>
             <section class="left">
                 <a href="#">
@@ -27,20 +29,20 @@
 
             <section class="right">
                 <ul>
-                    <li><a href="./src/html/memory.html">JEU</a></li>
-                    <li><a href="./src/html/scores.html">SCORES</a></li>
-                    <li><a href="./src/html/contact.html">CONTACT</a></li>
-                    <li><a href="./src/html/myaccount.html"><i class="fa-solid fa-user"></i></a></li>
+                    <li><a href="./src/html/memory.php">JEU</a></li>
+                    <li><a href="./src/html/scores.php">SCORES</a></li>
+                    <li><a href="./src/html/contact.php">CONTACT</a></li>
+                    <li><a href="./src/html/myaccount.php"><i class="fa-solid fa-user"></i></a></li>
                 </ul>
             </section>
         </nav>
-    </header>
+    </header> -->
 
 
     <section id="hero">
         <h1>BIENVENUE DANS NOTRE STUDIO !</h1>
         <h3>Venez challenger les cerveaux les plus agiles !</h3>
-        <a href="./src/html/login.html">Jouer !</a>
+        <a href="./login.php">Jouer !</a>
     </section>
 
 
@@ -91,7 +93,7 @@
     <!--------------------------- STATISTIQUES --------------------------->
     <section id="statistiques">
         <div class="stats_illust">
-            <img src="./src/assets/images/index/stat_illust_2.jpeg" alt="">
+            <img src="./assets/images/index/stat_illust_2.jpeg" alt="">
         </div>
         <div class="stats_infos">
             <div class="stats_infos_haut">
@@ -124,14 +126,14 @@
         <div class="notre_equipe_text">
             <h1>Notre Equipe</h1>
             <p>Des employés au corps d'acier et au coeur d'or !</p>
-            <div class="text_separator_container"><img src="./src/assets/images/index/team_text_separator_fit.png"
+            <div class="text_separator_container"><img src="./assets/images/index/team_text_separator_fit.png"
                     alt="text_separator"></div>
         </div>
         <div class="notre_equipe_cards">
 
             <!-- PREMIER MEMBRE -->
             <div class="equipe_card">
-                <div class="profil_container"> <img src="./src/assets/images/index/profil_01.jpeg" alt=""> </div>
+                <div class="profil_container"> <img src="./assets/images/index/profil_01.jpeg" alt=""> </div>
                 <h2>Célian Loisel</h2>
                 <h3>Git Master</h3>
                 <ul>
@@ -155,7 +157,7 @@
 
             <!-- DEUXIEME MEMBRE -->
             <div class="equipe_card">
-                <div class="profil_container"> <img src="./src/assets/images/index/profil_02.jpeg" alt=""> </div>
+                <div class="profil_container"> <img src="./assets/images/index/profil_02.jpeg" alt=""> </div>
                 <h2>DJ. Khaled</h2>
                 <h3>Dieu du CSS</h3>
                 <ul>
@@ -179,7 +181,7 @@
 
             <!-- TROISIEME MEMBRE  -->
             <div class="equipe_card">
-                <div class="profil_container"> <img src="./src/assets/images/index/profil_03.png" alt=""> </div>
+                <div class="profil_container"> <img src="./assets/images/index/profil_03.png" alt=""> </div>
                 <h2>Quentin Tresdoi</h2>
                 <h3>Dieu du PHP</h3>
                 <ul>
@@ -204,7 +206,7 @@
 
             <!-- QUATRIEME MEMBRE  -->
             <div class="equipe_card">
-                <div class="profil_container"> <img src="./src/assets/images/index/profil_04.jpeg" alt=""> </div>
+                <div class="profil_container"> <img src="./assets/images/index/profil_04.jpeg" alt=""> </div>
                 <h2>Matteo Bruno</h2>
                 <h3>Le gars sympa</h3>
                 <ul>
@@ -278,54 +280,11 @@
         </div>
     </div>
 
-    <!--------------------------- PIED DE PAGE --------------------------->
-    <footer>
-        <div class="information_footer">
-            <h1>Information</h1>
-            <h2>Vous avez besoin d'informations. N'heistez pas à nous contacter. </h2>
-            <ul class="information_liste_footer">
-                <li><span>Tel :</span> 06 61 80 49 27</li>
-                <li><span>Email :</span> celianloisel@gmail.com</li>
-                <li><span>Location :</span> Cergy</li>
-            </ul>
-            <ul class="icon_liste_footer">
-                <a href="https://www.facebook.com/">
-                    <li>
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </li>
-                </a>
-                <a href="https://www.twitter.com/">
-                    <li>
-                        <i class="fa-brands fa-twitter"></i>
-                    </li>
-                </a>
-                <a href="https://www.google.com/">
-                    <li>
-                        <i class="fa-brands fa-google"></i>
-                    </li>
-                </a>
-                <a href="https://www.pinterest.fr/">
-                    <li>
-                        <i class="fa-brands fa-pinterest"></i>
-                    </li>
-                </a>
-                <a href="https://www.instagram.com/">
-                    <li>
-                        <i class="fa-brands fa-instagram"></i>
-                    </li>
-                </a>
-            </ul>
-            <p class="copyright_footer">Copyright © 2022 Tout droits réservés</p>
-        </div>
-        <div class="power_footer">
-            <h1>Power Of Memory</h1>
-            <ul class="power_liste">
-                <li><a href="./src/html/login.html">Jouer !</a></li>
-                <li><a href="./src/html/scores.html">Les scores</a></li>
-                <li><a href="./src/html/contact.html">Nous contacter</a></li>
-            </ul>
-        </div>
-    </footer>
+<!--------------------------- PIED DE PAGE --------------------------->
+   
+    <?php require "./view/footer.inc.php"; ?>
+
+    
 </body>
 
 </html>
