@@ -60,7 +60,7 @@ class BDD
 
     public function selectMessage($myTable)
     {
-        $sql = 'SELECT message, pseudo, date, CASE WHEN user_id = 4 THEN TRUE ELSE FALSE END AS SENDER FROM ' . $myTable . ' INNER JOIN users ON messages.user_id = users.id WHERE date > DATE_SUB(NOW(), INTERVAL 1 DAY) ORDER BY date ASC';
+        $sql = 'SELECT message, pseudo, date, CASE WHEN user_id = ' . $_SESSION['user_id'] . ' THEN TRUE ELSE FALSE END AS SENDER FROM ' . $myTable . ' INNER JOIN users ON messages.user_id = users.id WHERE date > DATE_SUB(NOW(), INTERVAL 1 DAY) ORDER BY date ASC';
         $req = $this->bdd->prepare($sql);
         $req->execute();
 
