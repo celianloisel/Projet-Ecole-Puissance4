@@ -22,8 +22,7 @@
     <div class="login-box">
         <h2>Connexion</h2>
         <?php
-        require_once('./include/database.inc.php');
-
+        
         $bdd = new BDD('localhost', 'puissance4', 'root', '', 'bdd');
 
         $bdd->getmybdd();

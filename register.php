@@ -11,18 +11,17 @@
 
     <title>Inscription</title>
 </head>
+
+<?php require "./view/header.inc.php"; ?>
+
 <?php
-require_once './include/database.inc.php';
+
 $bdd = new BDD('localhost', 'puissance4', 'root', '', 'bdd');
 
 $bdd->getmybdd();
 ?>
 
 <body>
-
-
-    <?php require "./view/header.inc.php"; ?>
-
 
     <div class="bannière">
         <h1>Inscription</h1>
@@ -54,8 +53,8 @@ $bdd->getmybdd();
                 $special = preg_match('@[^\w]@', $_POST['passewordbdd']);
                 if (strlen($_POST['passewordbdd']) < 8) {
                     echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Le mot de passe doit faire plus de 8 caractére</p>';
-                } elseif (!$maj || !$min || !$number || !$special || strlen($_POST['passewordbdd'] < 8)) {
-                    echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Les mots passe doit contenir au moins une majuscule, un chiffre,un caractére spécial</p>';
+                } elseif (!$maj || !$min || !$number || !$special) {
+                    echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Les mots passe doit contenir au moins une minuscule ,une majuscule, un chiffre,un caractére spécial</p>';
                 } elseif ($_POST['passewordbdd'] != $_POST['pwdb']) {
                     echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Les mots passe doivent être identiques</p>';
                 } elseif (strlen($_POST['pseudo']) < 4) {
