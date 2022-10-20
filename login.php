@@ -21,16 +21,35 @@
     </div>
     <div class="login-box">
         <h2>Connexion</h2>
-        <form>
+        <?php
+        require_once('./include/database.inc.php');
+
+        $bdd = new BDD('localhost', 'puissance4', 'root', '', 'bdd');
+
+        $bdd->getmybdd();
+
+        ?>
+        <form action="./login.php" method="POST">
             <div class="user-box">
-                <input type="text" placeholder="Email">
+                <input type="email" placeholder="Email" name="email">
             </div>
 
             <div class="user-box">
-                <input type="password" placeholder="Mot de passe">
+                <input type="password" placeholder="Mot de passe" name="pasword">
             </div>
             <div class="button-form">
-                <a id="Connexion" href="#">Connexion</a>
+
+                <?php
+                if (isset($_POST['valider'])) {
+                    if (strlen($_POST['pasword']) < 8) {
+                        echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Le mot de passe doit faire plus de 8 character</p>';
+                    } else {
+                        $bdd->getLogin('users', $_POST['email'], $_POST['pasword']);
+                    }
+                }
+                ?>
+
+                <button id="Connexion" type="submit" name="valider">Connexion</button>
 
                 <div id="register">
                     Vous n'avez pas de compte ?

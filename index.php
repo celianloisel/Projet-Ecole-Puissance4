@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="./assets/css/page/index.css">
     <link rel="stylesheet" href="./assets/css/header.css">
     <link rel="stylesheet" href="./assets/css/footer.css">
-    <link rel="stylesheet" href="./assets/css/page/chat.css">
     <title>HomeV2</title>
 
 </head>
@@ -17,27 +16,10 @@
 
 <body>
 
-    
+
     <?php require "./view/header.inc.php"; ?>
-    <!-- <header>
-        <nav>
-            <section class="left">
-                <a href="#">
-                    <h1>The Power Of Memory</h1>
-                </a>
-            </section>
 
-            <section class="right">
-                <ul>
-                    <li><a href="./src/html/memory.php">JEU</a></li>
-                    <li><a href="./src/html/scores.php">SCORES</a></li>
-                    <li><a href="./src/html/contact.php">CONTACT</a></li>
-                    <li><a href="./src/html/myaccount.php"><i class="fa-solid fa-user"></i></a></li>
-                </ul>
-            </section>
-        </nav>
-    </header> -->
-
+    <?php require "./include/database.inc.php"; ?>
 
     <section id="hero">
         <h1>BIENVENUE DANS NOTRE STUDIO !</h1>
@@ -126,8 +108,7 @@
         <div class="notre_equipe_text">
             <h1>Notre Equipe</h1>
             <p>Des employés au corps d'acier et au coeur d'or !</p>
-            <div class="text_separator_container"><img src="./assets/images/index/team_text_separator_fit.png"
-                    alt="text_separator"></div>
+            <div class="text_separator_container"><img src="./assets/images/index/team_text_separator_fit.png" alt="text_separator"></div>
         </div>
         <div class="notre_equipe_cards">
 
@@ -230,61 +211,11 @@
         </div>
     </section>
 
-    <div class="chat">
-        <div class="titre">
-            <img src="https://images.wallpapersden.com/image/download/young-dwayne-the-rock-johnson_bGtoZW2UmZqaraWkpJRsZ2WtbGdl.jpg"
-                alt="img">
-            <h1>The Rock</h1>
-        </div>
-        <div class="body">
-            <div class="send">
-                <p>Moi</p>
-                <div class="bull">
-                    <p>
-                        Hello
-                    </p>
-                </div>
-                <p>aujourd'hui à 11:42 </p>
-            </div>
-            <div class="reçu">
-                <div class="text">
-                    <p>The Rock</p>
-                </div>
-                <div>
-                    <img src="https://images.wallpapersden.com/image/download/young-dwayne-the-rock-johnson_bGtoZW2UmZqaraWkpJRsZ2WtbGdl.jpg"
-                        alt="img">
-                    <div class="bull">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde id provident vero, expedita
-                            voluptatum dignissimos quam ipsam cum possimus voluptate ex sit at praesentium aperiam eius
-                            odit
-                            repellendus corrupti deleniti?</p>
-                    </div>
-                </div>
-                <div class="text">
-                    <p>aujourd'hui à 13:20</p>
-                </div>
-            </div>
-            <div class="send">
-                <p>Moi</p>
-                <div class="bull">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde id provident vero, expedita
-                        voluptatum dignissimos quam ipsam cum possimus voluptate ex sit at praesentium aperiam eius odit
-                        repellendus corrupti deleniti?</p>
-                </div>
-                <p>aujourd'hui à 13:42 </p>
-            </div>
-        </div>
-        <div class="message">
-            <input type="text" placeholder="Message">
-            <i class="fa-solid fa-paper-plane"></i>
-        </div>
-    </div>
+    <!--------------------------- PIED DE PAGE --------------------------->
 
-<!--------------------------- PIED DE PAGE --------------------------->
-   
     <?php require "./view/footer.inc.php"; ?>
 
-    
+
 </body>
 
 </html>

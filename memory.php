@@ -8,12 +8,15 @@
     <link rel="stylesheet" href="./assets/css/page/memory.css">
     <link rel="stylesheet" href="./assets/css/header.css">
     <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/page/chat.css">
     <title>Memory</title>
 </head>
 
 <body>
 
     <?php require "./view/header.inc.php"; ?>
+
+    <?php require "./include/database.inc.php"; ?>
 
     <div class="bannière">
         <h1>Memory</h1>
@@ -761,6 +764,9 @@
             </tr>
         </tbody>
     </table>
+
+    
+    <?php require "./chat.php"; ?>
 
     <?php require "./view/footer.inc.php"; ?>
 
