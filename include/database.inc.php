@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 class BDD
 {
     private $dbname;
@@ -26,6 +29,33 @@ class BDD
             die();
         }
         return $this->bdd;
+    }
+
+    public function getLogin($myTable, $myEmail, $myPwd)
+    {
+        $sql = 'SELECT * FROM ' . $myTable . ' WHERE pasword = ' . $myPwd . ' AND email = "' . $myEmail . '"';
+
+        $req = $this->bdd->prepare($sql);
+        $req->execute();
+
+        $result = $req->fetchAll();
+        $count = $req->rowCount();
+
+        date_default_timezone_set('Europe/Paris');
+
+        if ($count > 0) {
+            foreach ($result as $row) {
+
+                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['pseudo'] = $row['pseudo'];
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['date'] = date('Y-m-d H:i:s');
+
+                header("Refresh:0; url=myaccount.php");
+            }
+        } else {
+            echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Mot de passe ou email invalide</p>';
+        }
     }
 
     public function selectMessage($myTable)
