@@ -119,6 +119,7 @@ body {
 
     padding: 10%;
     color: #fff;
+    background-color: #161646;
     font-size: 12px;
     text-decoration: none;
     text-transform: uppercase;
@@ -139,7 +140,7 @@ body {
 .button-form {
     display: flex;
     flex-direction: column;
-    margin-top: 25px;
+    margin-top: 25px; 
 }
 
 #login {
@@ -160,3 +161,5 @@ body {
     color: #8F7CEC;
     text-decoration: none;
 }
+
+
