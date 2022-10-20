@@ -12,12 +12,14 @@
 </head>
 
 <body>
-   
+
 
     <?php require "./view/header.inc.php"; ?>
-    
 
-    <div class="bannière"><h1>NOUS CONTACTER</h1></div>
+
+    <div class="bannière">
+        <h1>NOUS CONTACTER</h1>
+    </div>
 
 
     <!-- page contact -->
@@ -39,24 +41,31 @@
             </ul>
         </section>
     </section>
-    <section class="formulaire">
+    <?php
+        if (isset($_POST['valider'])) {
+            if (empty($_POST['nom']) || empty($_POST['email']) ||empty($_POST['sujet'])) {
+                echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px; margin-top: 100px;">Veuillez remplir tout les champs</p>';
+            } elseif (strlen($_POST['message']) < 14) {
+                echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px; margin-top: 100px;">Le message doit faire au moins 15 characters</p>';
+            } else {
+                echo '<p style="color: #32a852; display: flex; justify-content: center; margin-bottom: 30px; margin-top: 100px;">Message envoyé</p>';
+            }
+        }
+        ?>
+    <form class="formulaire" method="POST" action="./contact.php">
         <section class="tout">
             <section class="haut">
-                <input type="nom" placeholder="Nom">
-                <input id="email" type="email" placeholder="Email">
+                <input type="nom" placeholder="Nom" name="nom">
+                <input id="email" type="email" placeholder="Email" name="email">
             </section>
             <section class="bas">
-                <input type="sujet" placeholder="Sujet">
-                <textarea id="message" type="text" placeholder="Message"></textarea>
-
+                <input type="sujet" placeholder="Sujet" name="sujet">
+                <textarea id="message" type="text" placeholder="Message" name="message"></textarea>
             </section>
-            <section class="envoyer">
-                <button>Envoyer</button>
-            </section>
-
+            <input id="aaaaa" type="submit" value="Envpyer" name="valider">
         </section>
-    </section>
-    
+    </form>
+
     <?php require "./view/footer.inc.php"; ?>
 
 </body>
