@@ -15,8 +15,6 @@
 
     <?php require "./view/header.inc.php"; ?>
 
-    <?php require "./include/database.inc.php"; ?>
-
     <div class="bannière" id="gras">Espace personnel</div>
 
     <div class="pseudo">
