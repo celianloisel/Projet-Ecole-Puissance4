@@ -30,7 +30,7 @@ class BDD
         }
         return $this->bdd;
     }
-    
+
     public function addUser($myTable, $_email, $_passwordbdd, $_pseudo)
     {
         $sql = 'SELECT * FROM ' . $myTable . ' WHERE pseudo = "' . $_pseudo . '" OR email = "' . $_email . '"';
@@ -43,7 +43,8 @@ class BDD
         if ($count > 0) {
             echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">pseudo ou l\'email est déjà utilisé</p>';
         } else {
-            $sql2 = 'INSERT INTO ' . $myTable . ' (email, pasword, pseudo, date_inscription) VALUES ("' . $_email . '", "' . $_passwordbdd . '", "' . $_pseudo . '", NOW())';
+            $mdp_hash = password_hash($_passwordbdd, PASSWORD_DEFAULT);
+            $sql2 = 'INSERT INTO ' . $myTable . ' (email, pasword, pseudo, date_inscription) VALUES ("' . $_email . '", "' . $mdp_hash . '", "' . $_pseudo . '", NOW())';
             $req2 = $this->bdd->prepare($sql2);
             $req2->execute();
 
