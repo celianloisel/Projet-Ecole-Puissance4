@@ -19,8 +19,6 @@
 
     <?php require "./view/header.inc.php"; ?>
 
-    <?php require "./include/database.inc.php"; ?>
-
     <section id="hero">
         <h1>BIENVENUE DANS NOTRE STUDIO !</h1>
         <h3>Venez challenger les cerveaux les plus agiles !</h3>

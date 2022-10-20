@@ -42,16 +42,16 @@
         </section>
     </section>
     <?php
-        if (isset($_POST['valider'])) {
-            if (empty($_POST['nom']) || empty($_POST['email']) ||empty($_POST['sujet'])) {
-                echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px; margin-top: 100px;">Veuillez remplir tout les champs</p>';
-            } elseif (strlen($_POST['message']) < 14) {
-                echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px; margin-top: 100px;">Le message doit faire au moins 15 characters</p>';
-            } else {
-                echo '<p style="color: #32a852; display: flex; justify-content: center; margin-bottom: 30px; margin-top: 100px;">Message envoyé</p>';
-            }
+    if (isset($_POST['valider'])) {
+        if (empty($_POST['nom']) || empty($_POST['email']) || empty($_POST['sujet'])) {
+            echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px; margin-top: 100px;">Veuillez remplir tout les champs</p>';
+        } elseif (strlen($_POST['message']) < 14) {
+            echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px; margin-top: 100px;">Le message doit faire au moins 15 characters</p>';
+        } else {
+            echo '<p style="color: #32a852; display: flex; justify-content: center; margin-bottom: 30px; margin-top: 100px;">Message envoyé</p>';
         }
-        ?>
+    }
+    ?>
     <form class="formulaire" method="POST" action="./contact.php">
         <section class="tout">
             <section class="haut">

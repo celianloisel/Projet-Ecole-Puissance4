@@ -37,14 +37,13 @@ class BDD
         $req = $this->bdd->prepare($sql);
         $req->execute();
 
-        $result = $req->fetchAll();
         $count = $req->rowCount();
 
         if ($count > 0) {
             echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">pseudo ou l\'email est déjà utilisé</p>';
         } else {
-            $mdp_hash = password_hash($_passwordbdd, PASSWORD_DEFAULT);
-            $sql2 = 'INSERT INTO ' . $myTable . ' (email, pasword, pseudo, date_inscription) VALUES ("' . $_email . '", "' . $mdp_hash . '", "' . $_pseudo . '", NOW())';
+            // $mdp_hash = password_hash($_passwordbdd, PASSWORD_DEFAULT);
+            $sql2 = 'INSERT INTO ' . $myTable . ' (email, pasword, pseudo, date_inscription) VALUES ("' . $_email . '", "' . $_passwordbdd . '", "' . $_pseudo . '", NOW())';
             $req2 = $this->bdd->prepare($sql2);
             $req2->execute();
 
