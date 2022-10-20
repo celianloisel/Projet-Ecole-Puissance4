@@ -16,6 +16,8 @@
 
     <?php require "./view/header.inc.php"; ?>
 
+    <?php require "./include/database.inc.php"; ?>
+
     <div class="bannière">
         <h1>Memory</h1>
     </div>
