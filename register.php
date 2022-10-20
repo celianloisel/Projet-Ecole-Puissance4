@@ -20,6 +20,7 @@ $bdd->getmybdd();
 
 <body>
 
+
     <?php require "./view/header.inc.php"; ?>
 
 
@@ -28,6 +29,7 @@ $bdd->getmybdd();
     </div>
     <div class="login-box">
         <h2>Inscription</h2>
+
         <form action="./register.php" method="POST">
             <div class="user-box">
                 <input type="email" placeholder="Email" name="email">
@@ -43,9 +45,17 @@ $bdd->getmybdd();
                 <input type="password" placeholder="Confirmer le mot de passe" name="pwdb">
             </div>
             <?php
+
+
             if (isset($_POST['submit'])) {
+                $maj = preg_match('@[A-Z]@', $_POST['passewordbdd']);
+                $min = preg_match('@[a-z]@', $_POST['passewordbdd']);
+                $number = preg_match('@[0-9]@', $_POST['passewordbdd']);
+                $special = preg_match('@[^\w]@', $_POST['passewordbdd']);
                 if (strlen($_POST['passewordbdd']) < 8) {
-                    echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Le mot de passe doit faire plus de 8 character</p>';
+                    echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Le mot de passe doit faire plus de 8 caractére</p>';
+                } elseif (!$maj || !$min || !$number || !$special || strlen($_POST['passewordbdd'] < 8)) {
+                    echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Les mots passe doit contenir au moins une majuscule, un chiffre,un caractére spécial</p>';
                 } elseif ($_POST['passewordbdd'] != $_POST['pwdb']) {
                     echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Les mots passe doivent être identiques</p>';
                 } elseif (strlen($_POST['pseudo']) < 4) {
@@ -54,6 +64,9 @@ $bdd->getmybdd();
                     $bdd->addUser('users', $_POST['email'], $_POST['passewordbdd'], $_POST['pseudo']);
                 }
             }
+
+
+
             ?>
             <div class="button-form">
                 <input type="submit" id="créer-le-compte" value="Finalisez l'inscription" name='submit'>
