@@ -16,27 +16,10 @@
 
 <body>
 
-    
+
     <?php require "./view/header.inc.php"; ?>
-    <!-- <header>
-        <nav>
-            <section class="left">
-                <a href="#">
-                    <h1>The Power Of Memory</h1>
-                </a>
-            </section>
 
-            <section class="right">
-                <ul>
-                    <li><a href="./src/html/memory.php">JEU</a></li>
-                    <li><a href="./src/html/scores.php">SCORES</a></li>
-                    <li><a href="./src/html/contact.php">CONTACT</a></li>
-                    <li><a href="./src/html/myaccount.php"><i class="fa-solid fa-user"></i></a></li>
-                </ul>
-            </section>
-        </nav>
-    </header> -->
-
+    <?php require "./include/database.inc.php"; ?>
 
     <section id="hero">
         <h1>BIENVENUE DANS NOTRE STUDIO !</h1>
@@ -125,8 +108,7 @@
         <div class="notre_equipe_text">
             <h1>Notre Equipe</h1>
             <p>Des employés au corps d'acier et au coeur d'or !</p>
-            <div class="text_separator_container"><img src="./assets/images/index/team_text_separator_fit.png"
-                    alt="text_separator"></div>
+            <div class="text_separator_container"><img src="./assets/images/index/team_text_separator_fit.png" alt="text_separator"></div>
         </div>
         <div class="notre_equipe_cards">
 
@@ -229,11 +211,11 @@
         </div>
     </section>
 
-<!--------------------------- PIED DE PAGE --------------------------->
-   
+    <!--------------------------- PIED DE PAGE --------------------------->
+
     <?php require "./view/footer.inc.php"; ?>
 
-    
+
 </body>
 
 </html>
