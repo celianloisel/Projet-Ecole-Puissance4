@@ -178,4 +178,64 @@ class BDD
             echo 'Le mot de passe est invalide.';
         }
     }
+
+    public function genScores($myTable, $mySorting, $myOnlyMe)
+    {
+
+        if (isset($mySorting)) {
+            $sortingScores = $mySorting;
+        } else {
+            $sortingScores = "date";
+        }
+
+
+        if (isset($myOnlyMe)) {
+            $sql = 'SELECT * FROM ' . $myTable . ' INNER JOIN users ON scores.user_id = users.id INNER JOIN games ON scores.game_id = games.id WHERE user_id=' . $_SESSION['user_id'] . '  ORDER BY ' . $sortingScores . ' DESC';
+        } else {
+            $sql = 'SELECT * FROM ' . $myTable . ' INNER JOIN users ON scores.user_id = users.id INNER JOIN games ON scores.game_id = games.id  ORDER BY ' . $sortingScores . ' DESC';
+        }
+
+        $req = $this->bdd->prepare($sql);
+        $req->execute();
+        $result = $req->fetchAll();
+
+        foreach ($result as $row) {
+            echo '<tr>
+                    <th>  ' . $row["game"] . '  </th>
+                    <th>  ' . $row["difficulty"] . ' </th>
+                    <th> ' . $row["pseudo"] . '  </th>
+                    <th>  ' . $row["score"] . ' </th>
+                    <th> ' . $row["date"] . ' </th>
+                </tr>';
+        }
+    }
+
+
+    public function genPlayTotal($myTable){
+        $sql = "SELECT * FROM scores INNER JOIN users ON scores.user_id = users.id INNER JOIN games ON scores.game_id = games.id";
+        $req = $this->bdd->prepare($sql);
+        $req->execute();
+        $PlayTotal = $req->rowCount();
+
+        echo $PlayTotal;
+    }
+
+    public function genRegisteredTotal($myTable){
+        $sql = "SELECT * FROM users";
+        $req = $this->bdd->prepare($sql);
+        $req->execute();
+        $registeredTotal = $req->rowCount();
+
+        echo $registeredTotal;
+    }
+
+    public function genMaxScore($myTable){
+        $sql = "SELECT MAX(score) FROM scores";
+        $req = $this->bdd->prepare($sql);
+        $req->execute();
+        $maxScore = $req->fetch();
+        $finalMax = $maxScore[0];
+        echo $finalMax;
+    }
+
 }

@@ -68,6 +68,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    flex-direction: column;
 }
 
 .score_table {
@@ -81,6 +83,28 @@ body {
     /* overflow: hidden; */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   }
+
+  #score_table_section form{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .form_section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  form *{
+    color: #0f0f2e;
+    margin: 0.2rem;
+    margin-bottom: 1rem;
+  }
+
+  form div label {
+    color: aliceblue;
+  }
+
   
   .score_table thead tr {
     /* background-color: #009879; */

@@ -1,6 +1,5 @@
 <?php require_once "./include/database.inc.php"; ?>
 
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -17,75 +16,63 @@
 </head>
 
 <body>
-    
-    <?php require "./view/header.inc.php"; ?>
 
-    <div class="bannière"><h1>Scores</h1></div>
+    <?php require "./view/header.inc.php";
+    $bdd = new BDD('localhost', 'puissance4', 'root', '', 'bdd');
+
+    $bdd->getmybdd();
+    ?>
+
+    <div class="bannière">
+        <h1>Scores</h1>
+    </div>
 
     <!-- TABLEAU DES SCORES -->
 
     <section id="score_table_section">
+        <!-- formulaire pour gerer le sorting -->
+        <form action="scores.php" method="POST">
+
+            <div class="form_section">
+                <label>sorting</label>
+                <select name="sorting">
+                    <option value="date">date</option>
+                    <option value="score">score</option>
+                    <option value="pseudo">pseudo</option>
+                    <option value="difficulty">difficulty</option>
+                </select>
+            </div>
+
+            <div class="form_section">
+                <label>onlyMe</label>
+                <input type="checkbox" name="onlyMe" value="onlyMe">
+            </div>
+
+            <div>
+                <input type="submit" id="valider" value="Valider" name="sorting_submit">
+            </div>
+        </form>
+
+        <!-- formulaire pour etre en mode vision des scores personnel uniquement -->
+
         <table class="score_table">
             <thead>
                 <tr>
-                    <th>Jeu</th>
-                    <th>Pseudo</th>
-                    <th>Difficulté</th>
-                    <th>Score</th>
-                    <th>Date</th>
+                    <th>jeu</th>
+                    <th>difficultée</th>
+                    <th>joueur</th>
+                    <th>score</th>
+                    <th>date partie</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Pokemon</td>
-                    <td>Quentin</td>
-                    <td>2</td>
-                    <td>56</td>
-                    <td>06/09/22 : 19h42</td>
-                </tr>
-                <tr class="a@ctive-row">
-                    <td>Pokemon</td>
-                    <td>Khaled</td>
-                    <td>1</td>
-                    <td>9</td>
-                    <td>06/09/22 : 14h22</td>
-                </tr>
-                <tr>
-                    <td>Pokemon</td>
-                    <td>Matteo</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>06/09/22 : 15h42</td>
-                </tr>
-                <tr>
-                    <td>Pokemon</td>
-                    <td>Célian</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>06/09/22 : 09h30</td>
-                </tr>
-                <tr>
-                    <td>Pokemon</td>
-                    <td>Matteo</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>06/09/22 : 15h42</td>
-                </tr>
-                <tr>
-                    <td>Pokemon</td>
-                    <td>Célian</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>06/09/22 : 09h30</td>
-                </tr>
-                <tr>
-                    <td>Pokemon</td>
-                    <td>Quentin</td>
-                    <td>2</td>
-                    <td>56</td>
-                    <td>06/09/22 : 19h42</td>
-                </tr>
 
+            <!-- pour chaque ligne de la tale scores, on va l'affecter a la variable score et lui appliquer un traitement pour qu'elle affiche (echo) les donnée de colones dans différent balises <th> -->
+            <tbody>
+                <?php
+                if (isset($_POST['sorting'], $_POST['onlyMe'])) {
+                $bdd->genScores('scores', $_POST['sorting'], $_POST['sorting_submit'], $_POST['onlyMe']);
+                }
+                ?>
             </tbody>
         </table>
     </section>

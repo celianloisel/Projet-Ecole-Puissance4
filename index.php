@@ -20,7 +20,10 @@
 <body>
 
 
-    <?php require "./view/header.inc.php"; ?>
+    <?php require "./view/header.inc.php"; 
+    $bdd = new BDD('localhost', 'puissance4', 'root', '', 'bdd');
+    $bdd->getmybdd();
+    ?>
 
     <section id="hero">
         <h1>BIENVENUE DANS NOTRE STUDIO !</h1>
@@ -81,22 +84,34 @@
         <div class="stats_infos">
             <div class="stats_infos_haut">
                 <div class="stats_infos_section_1">
-                    <h2 class="stats_nombre">310</h2>
+                    <h2 class="stats_nombre"> 
+                    <?php 
+                    $bdd->genPlayTotal($scores);
+                    ?>    
+                    </h2>
                     <h3 class="stats_titre">Parties Jouées</h3>
                 </div>
                 <div class="stats_infos_section_2">
-                    <h2 class="stats_nombre">10 sec</h2>
-                    <h2 class="stats_titre">Temps Record</h2>
+                    <h2 class="stats_nombre">
+                        <?php 
+                        $bdd->genMaxScore($scores);
+                        ?>   
+                    </h2>
+                    <h2 class="stats_titre">Meilleur Score</h2>
                 </div>
             </div>
             <div class="stats_infos_bas">
                 <div class="stats_infos_section_3">
-                    <h2 class="stats_nombre">1020</h2>
+                    <h2 class="stats_nombre">1</h2>
                     <h2 class="stats_titre">Joueurs Connectés</h2>
                 </div>
 
                 <div class="stats_infos_section_4">
-                    <h2 class="stats_nombre">21 300</h2>
+                    <h2 class="stats_nombre">
+                        <?php 
+                        $bdd->genRegisteredTotal($scores);
+                        ?>   
+                    </h2>
                     <h2 class="stats_titre">Joueurs Inscrits</h2>
                 </div>
             </div>
