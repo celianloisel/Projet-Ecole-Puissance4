@@ -7,7 +7,7 @@
                 <h1>The Power Of Memory</h1>
             </a>
         </section>
-
+ 
         <section class="right">
             <ul>
                 <li><a href="
