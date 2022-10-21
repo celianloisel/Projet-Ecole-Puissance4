@@ -16,24 +16,26 @@
 </head>
 
 <body>
-    
-    <?php require "./view/header.inc.php"; 
+
+    <?php require "./view/header.inc.php";
     $bdd = new BDD('localhost', 'puissance4', 'root', '', 'bdd');
 
     $bdd->getmybdd();
     ?>
 
-    <div class="bannière"><h1>Scores</h1></div>
+    <div class="bannière">
+        <h1>Scores</h1>
+    </div>
 
     <!-- TABLEAU DES SCORES -->
 
     <section id="score_table_section">
-    <!-- formulaire pour gerer le sorting -->
-    <form action="scores.php" method="POST">
-        
+        <!-- formulaire pour gerer le sorting -->
+        <form action="scores.php" method="POST">
+
             <div class="form_section">
                 <label>sorting</label>
-                <select name="sorting" >
+                <select name="sorting">
                     <option value="date">date</option>
                     <option value="score">score</option>
                     <option value="pseudo">pseudo</option>
@@ -45,33 +47,35 @@
                 <label>onlyMe</label>
                 <input type="checkbox" name="onlyMe" value="onlyMe">
             </div>
-        
+
             <div>
                 <input type="submit" id="valider" value="Valider" name="sorting_submit">
             </div>
-    </form>
-    
-    <!-- formulaire pour etre en mode vision des scores personnel uniquement -->
+        </form>
 
-    <table class="score_table">
-        <thead>
-            <tr>
-                <th>jeu</th>
-                <th>difficultée</th>
-                <th>joueur</th>
-                <th>score</th>
-                <th>date partie</th>
-            </tr>
-        </thead>
+        <!-- formulaire pour etre en mode vision des scores personnel uniquement -->
 
-      <!-- pour chaque ligne de la tale scores, on va l'affecter a la variable score et lui appliquer un traitement pour qu'elle affiche (echo) les donnée de colones dans différent balises <th> -->
-        <tbody>
-            <?php 
-                $bdd->genScores('scores',$_POST['sorting'],$_POST['sorting_submit'],$_POST['onlyMe']);
-            ?>
-        </tbody>
-    </table>
-</section>
+        <table class="score_table">
+            <thead>
+                <tr>
+                    <th>jeu</th>
+                    <th>difficultée</th>
+                    <th>joueur</th>
+                    <th>score</th>
+                    <th>date partie</th>
+                </tr>
+            </thead>
+
+            <!-- pour chaque ligne de la tale scores, on va l'affecter a la variable score et lui appliquer un traitement pour qu'elle affiche (echo) les donnée de colones dans différent balises <th> -->
+            <tbody>
+                <?php
+                if (isset($_POST['sorting'], $_POST['onlyMe'])) {
+                $bdd->genScores('scores', $_POST['sorting'], $_POST['sorting_submit'], $_POST['onlyMe']);
+                }
+                ?>
+            </tbody>
+        </table>
+    </section>
 
     <?php require "./view/footer.inc.php"; ?>
 
