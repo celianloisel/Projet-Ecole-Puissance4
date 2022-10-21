@@ -111,4 +111,71 @@ class BDD
         $req = $this->bdd->prepare($sql);
         $req->execute();
     }
+
+    public function updateEmail($myTable, $myNewEmail, $myEmail, $myPasword)
+    {
+
+        $hash = 'SELECT * FROM ' . $myTable . ' WHERE email = "' . $myEmail . '"';
+        $req = $this->bdd->prepare($hash);
+        $req->execute();
+
+        $result = $req->fetchAll();
+
+        foreach ($result as $row) {
+            $mdp = $row['pasword'];
+        }
+
+        if (password_verify($myPasword, $mdp)) {
+
+            $count = $req->rowCount();
+
+            if ($count > 0) {
+                foreach ($result as $row) {
+
+                    $sql = 'UPDATE ' . $myTable . ' SET email = "' . $myNewEmail . '" WHERE id = "' . $_SESSION['user_id'] . '"';
+                    $req2 = $this->bdd->prepare($sql);
+                    $req2->execute();
+                }
+            } else {
+                echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Email ou mot de passe invalide</p>';
+            }
+        } else {
+            echo 'Le mot de passe est invalide.';
+        }
+    }
+
+
+
+    public function updatePasword($myTable, $myOldPasword, $myNewPasword)
+    {
+
+        $hash = 'SELECT * FROM ' . $myTable . ' WHERE id = "' . $_SESSION["user_id"] . '"';
+        $req = $this->bdd->prepare($hash);
+        $req->execute();
+
+        $result = $req->fetchAll();
+
+        foreach ($result as $row) {
+            $mdp = $row['pasword'];
+        }
+
+        if (password_verify($myOldPasword, $mdp)) {
+
+            $count = $req->rowCount();
+
+            if ($count > 0) {
+                foreach ($result as $row) {
+
+                    $pwhash = password_hash($myNewPasword, PASSWORD_DEFAULT);
+                    $sql = 'UPDATE ' . $myTable . ' SET pasword = "' . $pwhash . '" WHERE id = "' . $_SESSION['user_id'] . '"';
+                    $req2 = $this->bdd->prepare($sql);
+                    $req2->execute();
+                }
+            } else {
+                echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Mot de passe invalide</p>';
+            }
+        } else {
+            echo 'Le mot de passe est invalide.';
+        }
+    }
 }

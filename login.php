@@ -1,3 +1,6 @@
+<?php require_once "./include/database.inc.php"; ?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 

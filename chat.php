@@ -1,3 +1,6 @@
+<?php require_once "./include/database.inc.php"; ?>
+
+
 <div class="chat">
     <div class="titre">
         <img src="./assets/images/chat/69001805-icône-de-chat-icône-noire-sur-fond-transparent-.webp" alt="img">
@@ -5,7 +8,6 @@
     </div>
     <div class="body">
         <?php
-        require_once('./include/database.inc.php');
 
         $bdd = new BDD('localhost', 'puissance4', 'root', '', 'bdd');
 

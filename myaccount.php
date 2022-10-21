@@ -1,3 +1,6 @@
+<?php require_once "./include/database.inc.php"; ?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -12,6 +15,11 @@
 </head>
 
 <body>
+    <?php
+    $bdd = new BDD('localhost', 'puissance4', 'root', '', 'bdd');
+
+    $bdd->getmybdd();
+    ?>
 
     <?php require "./view/header.inc.php"; ?>
 
@@ -31,41 +39,77 @@
     <div class="alignement">
         <div class="formulaire0">
             <h2>Changement d'email</h2>
-            <form>
+            <form method="POST" action="myaccount.php">
                 <div class="user-box">
-                    <input type="text" placeholder="Ancien email">
+                    <input type="email" placeholder="Ancien email" name=oldMail>
                 </div>
 
                 <div class="user-box">
-                    <input type="text" placeholder="Nouvel email">
+                    <input type="email" placeholder="Nouvel email" name="newMail">
                 </div>
                 <div class="user-box">
-                    <input type="password" placeholder="Mot de passe">
+                    <input type="password" placeholder="Mot de passe" name="mdp">
                 </div>
                 <div class="user-box">
-                    <input type="password" placeholder="Confirmer le mot de passe">
+                    <input type="password" placeholder="Confirmer le mot de passe" name="confirmPswd">
                 </div>
+
+                <?php
+                if (isset($_POST['validerEmail'])) {
+                    if ($_POST['mdp'] != $_POST['confirmPswd']) {
+                        echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Les mots passe doivent être identiques</p>';
+                        // } elseif ($_POST['oldMail'] != $_POST['newMail']) {
+                        //     echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Les adresses mails doivent être identiques</p>';
+                    } else {
+                        $bdd->updateEmail('users', $_POST['newMail'], $_POST['oldMail'], $_POST['mdp']);
+                    }
+                }
+
+                ?>
+
                 <div class="button-form">
-                    <a id="change-email" href="#">Changer l'email</a>
+                    <button id="Connexion" type="submit" name="validerEmail">Valider l'email</button>
+
                 </div>
             </form>
         </div>
 
         <div class="formulaire1">
             <h2>Changement de mot de passe</h2>
-            <div class="user-box">
-                <input type="text" placeholder="Ancien mot de passe">
-            </div>
+            <form method="POST" action="myaccount.php">
 
-            <div class="user-box">
-                <input type="password" placeholder="Nouveau mot de passe">
-            </div>
-            <div class="user-box">
-                <input type="password" placeholder="Confirmer le nouveau mot de passe">
-            </div>
-            <div class="button-form">
-                <a id="change-password" href="#">Changer le mot de passe</a>
-            </div>
+                <div class="user-box">
+                    <input type="text" placeholder="Ancien mot de passe" name="oldPassword">
+                </div>
+
+                <div class="user-box">
+                    <input type="password" placeholder="Nouveau mot de passe" name="newPassword">
+                </div>
+                <div class="user-box">
+                    <input type="password" placeholder="Confirmer le nouveau mot de passe" name="confirmPassword">
+
+                    <?php
+                    if (isset($_POST['validerPasword'])) {
+                        $maj = preg_match('@[A-Z]@', $_POST['newPassword']);
+                        $min = preg_match('@[a-z]@', $_POST['newPassword']);
+                        $number = preg_match('@[0-9]@', $_POST['newPassword']);
+                        $special = preg_match('@[^\w]@', $_POST['newPassword']);
+                        if ($_POST['newPassword'] != $_POST['confirmPassword']) {
+                            echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Les mots passe doivent être identiques</p>';
+                        } elseif (!$maj || !$min || !$number || !$special) {
+                            echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Les mots passe doit contenir au moins une minuscule ,une majuscule, un chiffre,un caractére spécial</p>';
+                        } else {
+                            $bdd->updatePasword('users', $_POST['oldPassword'], $_POST['newPassword']);
+                        }
+                    }
+
+                    ?>
+
+                </div>
+                <div class="button-form">
+                    <button id="change-password" type="submit" name="validerPasword">Changez le mot de passe</button>
+                </div>
+            </form>
         </div>
     </div>
 
