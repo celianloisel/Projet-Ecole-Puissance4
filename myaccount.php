@@ -12,10 +12,21 @@
 </head>
 
 <body>
-    
+
     <?php require "./view/header.inc.php"; ?>
 
     <div class="bannière" id="gras">Espace personnel</div>
+
+    <div class="pseudo">
+        <?php
+        if (isset($_SESSION["pseudo"])) {
+            echo "Vous etes connectez en temps que " . $_SESSION["pseudo"];
+        } else {
+            echo "Vous n'etes pas co";
+        }
+
+        ?>
+    </div>
 
     <div class="alignement">
         <div class="formulaire0">

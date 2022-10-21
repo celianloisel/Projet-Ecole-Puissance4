@@ -118,14 +118,15 @@ body {
 
     padding: 10%;
     color: #fff;
+    background-color: #0f0f2e;
     font-size: 12px;
-    text-decoration: none;
     text-transform: uppercase;
     overflow: hidden;
     transition: .5s;
     letter-spacing: 1px;
     border: 1px solid #8F7CEC;
     margin: auto;
+    border-radius: 5px;
 }
 
 #Connexion:hover {
