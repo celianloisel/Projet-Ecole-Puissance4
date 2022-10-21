@@ -42,8 +42,8 @@ class BDD
         if ($count > 0) {
             echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">pseudo ou l\'email est déjà utilisé</p>';
         } else {
-            // $mdp_hash = password_hash($_passwordbdd, PASSWORD_DEFAULT);
-            $sql2 = 'INSERT INTO ' . $myTable . ' (email, pasword, pseudo, date_inscription) VALUES ("' . $_email . '", "' . $_passwordbdd . '", "' . $_pseudo . '", NOW())';
+            $mdp_hash = password_hash($_passwordbdd, PASSWORD_DEFAULT);
+            $sql2 = 'INSERT INTO ' . $myTable . ' (email, pasword, pseudo, date_inscription) VALUES ("' . $_email . '", "' . $mdp_hash . '", "' . $_pseudo . '", NOW())';
             $req2 = $this->bdd->prepare($sql2);
             $req2->execute();
 
@@ -53,28 +53,37 @@ class BDD
 
     public function getLogin($myTable, $myEmail, $myPwd)
     {
-        $sql = 'SELECT * FROM ' . $myTable . ' WHERE pasword = ' . $myPwd . ' AND email = "' . $myEmail . '"';
-
-        $req = $this->bdd->prepare($sql);
+        $hash = 'SELECT * FROM ' . $myTable . ' WHERE email = "' . $myEmail . '"';
+        $req = $this->bdd->prepare($hash);
         $req->execute();
 
         $result = $req->fetchAll();
-        $count = $req->rowCount();
 
-        date_default_timezone_set('Europe/Paris');
+        foreach ($result as $row) {
+            $mdp = $row['pasword'];
+        }
 
-        if ($count > 0) {
-            foreach ($result as $row) {
+        if (password_verify($myPwd, $mdp)) {
 
-                $_SESSION['user_id'] = $row['id'];
-                $_SESSION['pseudo'] = $row['pseudo'];
-                $_SESSION['email'] = $row['email'];
-                $_SESSION['date'] = date('Y-m-d H:i:s');
+            $count = $req->rowCount();
 
-                header("Refresh:0; url=myaccount.php");
+            date_default_timezone_set('Europe/Paris');
+
+            if ($count > 0) {
+                foreach ($result as $row) {
+
+                    $_SESSION['user_id'] = $row['id'];
+                    $_SESSION['pseudo'] = $row['pseudo'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['date'] = date('Y-m-d H:i:s');
+
+                    header("Refresh:0; url=myaccount.php");
+                }
+            } else {
+                echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Email ou mot de passe invalide</p>';
             }
         } else {
-            echo '<p style="color: #ff0000; display: flex; justify-content: center; margin-bottom: 30px;">Mot de passe ou email invalide</p>';
+            echo 'Le mot de passe est invalide.';
         }
     }
 
