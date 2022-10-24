@@ -77,6 +77,10 @@ class BDD
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['date'] = date('Y-m-d H:i:s');
 
+                    $sql = 'UPDATE ' . $myTable . ' SET date_last_connexion = NOW() WHERE email = "' . $myEmail . '"';
+                    $req2 = $this->bdd->prepare($sql);
+                    $req2->execute();
+
                     header("Refresh:0; url=myaccount.php");
                 }
             } else {
@@ -106,25 +110,26 @@ class BDD
 
     public function insertMessage($myTable, $myMessage)
     {
-        $sql = 'INSERT INTO ' . $myTable . ' (game_id, user_id, message, date) VALUES (1, 4, "' . $myMessage . '", NOW())';
+        $sql = 'INSERT INTO ' . $myTable . ' (game_id, user_id, message, date) VALUES (1, ' . $_SESSION['user_id'] . ', "' . $myMessage . '", NOW())';
 
         $req = $this->bdd->prepare($sql);
         $req->execute();
     }
 
-    public function genScores($myTable, $mySorting, $mySubmit, $myOnlyMe){
-        
-        if (isset($mySorting)){
+    public function genScores($myTable, $mySorting, $myOnlyMe)
+    {
+
+        if (isset($mySorting)) {
             $sortingScores = $mySorting;
-        }else {
+        } else {
             $sortingScores = "date";
         }
 
 
-        if (isset($myOnlyMe)){
-            $sql = 'SELECT * FROM '. $myTable .' INNER JOIN users ON scores.user_id = users.id INNER JOIN games ON scores.game_id = games.id WHERE user_id='.$_SESSION['user_id'].'  ORDER BY '. $sortingScores .' DESC';
-        }else {
-            $sql = 'SELECT * FROM '. $myTable .' INNER JOIN users ON scores.user_id = users.id INNER JOIN games ON scores.game_id = games.id  ORDER BY '. $sortingScores .' DESC';
+        if (isset($myOnlyMe)) {
+            $sql = 'SELECT * FROM ' . $myTable . ' INNER JOIN users ON scores.user_id = users.id INNER JOIN games ON scores.game_id = games.id WHERE user_id=' . $_SESSION['user_id'] . '  ORDER BY ' . $sortingScores . ' DESC';
+        } else {
+            $sql = 'SELECT * FROM ' . $myTable . ' INNER JOIN users ON scores.user_id = users.id INNER JOIN games ON scores.game_id = games.id  ORDER BY ' . $sortingScores . ' DESC';
         }
 
         $req = $this->bdd->prepare($sql);
@@ -132,12 +137,12 @@ class BDD
         $result = $req->fetchAll();
 
         foreach ($result as $row) {
-            echo'<tr>
-                    <th>  '.$row["game"].'  </th>
-                    <th>  '.$row["difficulty"].' </th>
-                    <th> '.$row["pseudo"].'  </th>
-                    <th>  '.$row["score"].' </th>
-                    <th> '.$row["date"].' </th>
+            echo '<tr>
+                    <th> ' . $row["game"] . ' </th>
+                    <th> ' . $row["difficulty"] . ' </th>
+                    <th> ' . $row["pseudo"] . ' </th>
+                    <th> ' . $row["score"] . ' </th>
+                    <th> ' . $row["date"] . ' </th>
                 </tr>';
         }
     }

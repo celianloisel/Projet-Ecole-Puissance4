@@ -85,4 +85,4 @@ $bdd->getmybdd();
 
 </html>
 
-<script src="https://kit.fontawesome.com/f8f2a2e311.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/59083c418d.js" crossorigin="anonymous"></script>
