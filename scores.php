@@ -69,11 +69,19 @@
             <!-- pour chaque ligne de la tale scores, on va l'affecter a la variable score et lui appliquer un traitement pour qu'elle affiche (echo) les donnée de colones dans différent balises <th> -->
             <tbody>
                 <?php
+                $onlyMe = null;
+                $sorting = "date";
+
                 if (isset($_POST['onlyMe'])) {
-                    $bdd->genScores('scores', $_POST['sorting'], $_POST['onlyMe']);
-                } else {
-                    $bdd->genScores('scores', $_POST['sorting'], null);
+                    $onlyMe = $_POST['onlyMe'];
                 }
+
+                if (isset($_POST['onlyMe'])) {
+                    $sorting = $_POST['sorting'];
+                }
+
+                $bdd->genScores('scores', $sorting, $onlyMe);
+
                 ?>
             </tbody>
         </table>
