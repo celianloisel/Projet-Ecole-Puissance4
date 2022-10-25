@@ -1,5 +1,3 @@
-<?php require_once "./include/database.inc.php"; ?>
-
 <header>
     <nav>
         <section class="left">
