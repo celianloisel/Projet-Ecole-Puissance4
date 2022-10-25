@@ -57,13 +57,28 @@ body {
     color: #0f0f2e;
 }
 
-/*-------------------------------Tableau-------------------------------*/
 
+/*-------------------------------Menu-------------------------------*/
+
+.menu {
+    display: flex;
+    justify-content: center;
+}
+
+form * {
+    color: #0f0f2e;
+    margin: 0.2rem;
+    margin-bottom: 1rem;
+}
+
+
+/*-------------------------------Tableau-------------------------------*/
 table {
     margin: 50px auto;
     table-layout: fixed;
-    width: 95vh;
+    width: auto;
     height: 95vh;
+    max-height: 95vh;
 }
 
 tbody {
@@ -72,8 +87,5 @@ tbody {
 }
 
 td {
-    background-image: url(../../images/theme/pokemon/393.png);
-    background-size: contain;
-    background-repeat: no-repeat;
     border: 2px solid #333;
 }
