@@ -1,3 +1,13 @@
+/////////// Brouillon
+const cards = document.querySelectorAll('.memory-card');
+
+function flipCard() {
+  this.classList.toggle('flip');
+}
+
+cards.forEach(card => card.addEventListener('click', flipCard));
+
+/////////// Propre
 const difficultyOption = [6, 8, 12, 20]
 const carte = [];
 var themeChosen = null;

@@ -21,7 +21,30 @@
     <div class="bannière">
         <h1>Memory</h1>
     </div>
-
+    <h4 class="stats">
+				<span>moves:</span>
+				<span class="move"> 0 </span>,
+                <span>scores:</span>
+				<span class="score"> 0 </span>,
+				<span>time:</span>
+				<span class="time">00:00</span>
+			</h4>
+      
+    <section class="memory-game">
+    <div class="memory-card" data-framework="aurelia">
+      <img class="card" src="./assets/images/theme/pokemon/400.png" alt="Aurelia" />
+      <img class="back-card" src="./assets/images/theme/pokemon/470.png" alt="JS Badge" />
+    </div>
+    <div class="memory-card" data-framework="aurelia">
+      <img class="card" src="./assets/images/theme/pokemon/400.png" alt="Aurelia" />
+      <img class="back-card" src="./assets/images/theme/pokemon/470.png" alt="JS Badge" />
+    </div>
+    <div class="memory-card" data-framework="aurelia">
+      <img class="card" src="./assets/images/theme/pokemon/400.png" alt="Aurelia" />
+      <img class="back-card" src="./assets/images/theme/pokemon/470.png" alt="JS Badge" />
+    </div>
+  </section>
+  
     <div class="menu">
         <form action="" method="POST">
             <select id="theme" name="theme">
