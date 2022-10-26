@@ -29,8 +29,8 @@
 				<span>time:</span>
 				<span class="time">00:00</span>
 			</h4>
+      
     <section class="memory-game">
-    
     <div class="memory-card" data-framework="aurelia">
       <img class="card" src="./assets/images/theme/pokemon/400.png" alt="Aurelia" />
       <img class="back-card" src="./assets/images/theme/pokemon/470.png" alt="JS Badge" />
@@ -43,15 +43,31 @@
       <img class="card" src="./assets/images/theme/pokemon/400.png" alt="Aurelia" />
       <img class="back-card" src="./assets/images/theme/pokemon/470.png" alt="JS Badge" />
     </div>
-    
-
-    
   </section>
+  
+    <div class="menu">
+        <form action="" method="POST">
+            <select id="theme" name="theme">
+                <option disabled selected value style="display:none">Veuillez choisir un thème</option>
+                <option value="pokemon">Pokemon</option>
+                <option value="yugioh">Yu-gi-oh</option>
+                <option value="emoji">Emoji</option>
+            </select>
+            <select id="difficulty" name="difficulty">
+                <option disabled selected value style="display:none">Veuillez choisir un thème</option>
+                <option value="facile">Facile</option>
+                <option value="intermediaire">Intermédiaire</option>
+                <option value="expert">Expert</option>
+                <option value="impossible">Impossible</option>
+            </select>
+            <button id="play" type="submit" name="valider">Jouer</button>
+        </form>
+    </div>
 
-    <script src="./script/memory.js"></script>
+    <div id="errorMessage"></div>
 
-    
-
+    <div id="tableau"></div>
+    <div id="time">00:00</div>
 
     <?php require "./chat.php"; ?>
 
@@ -62,3 +78,4 @@
 </html>
 
 <script src="https://kit.fontawesome.com/59083c418d.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="./script/memory.js"></script>
