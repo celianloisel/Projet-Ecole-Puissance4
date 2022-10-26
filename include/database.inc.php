@@ -59,6 +59,8 @@ class BDD
 
         $result = $req->fetchAll();
 
+        $mdp = null;
+
         foreach ($result as $row) {
             $mdp = $row['pasword'];
         }
