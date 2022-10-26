@@ -2,7 +2,7 @@
 const cards = document.querySelectorAll('.memory-card');
 
 function flipCard() {
-  this.classList.toggle('flip');
+    this.classList.toggle('flip');
 }
 
 cards.forEach(card => card.addEventListener('click', flipCard));
@@ -12,7 +12,6 @@ const difficultyOption = [6, 8, 12, 20]
 const carte = [];
 var themeChosen = null;
 var difficultyChosen = null;
-var card;
 
 const theme = document.querySelector('#theme')
 
@@ -45,13 +44,30 @@ play.addEventListener('click', (event) => {
     event.preventDefault();
 
     if (themeChosen == null || difficultyChosen == null) {
+
+        let pCheck = document.querySelector('#pCheck');
+        if (pCheck != undefined) {
+            pCheck.remove()
+        }
+
         var menu = document.getElementById('errorMessage')
         var errorMessage = document.createElement("p")
         const errorText = document.createTextNode("Veuillez choisir un difficulter et un theme !");
 
+        errorMessage.setAttribute('id', 'pCheck')
+
         errorMessage.appendChild(errorText)
         menu.appendChild(errorMessage)
     } else {
+
+        if (pCheck != undefined) {
+            pCheck.remove()
+        }
+
+        let tblCheck = document.querySelector('table');
+        if (tblCheck != undefined) {
+            tblCheck.remove()
+        }
 
         for (let index = 0; index < (difficultyOption[difficultyChosen] * difficultyOption[difficultyChosen]) / 2; index++) {
             selectImage()
