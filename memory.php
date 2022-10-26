@@ -44,6 +44,7 @@
     <div id="errorMessage"></div>
 
     <div id="tableau"></div>
+    <div id="time">00:00</div>
 
     <?php require "./chat.php"; ?>
 

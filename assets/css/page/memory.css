@@ -76,9 +76,8 @@ form * {
 table {
     margin: 50px auto;
     table-layout: fixed;
-    width: auto;
+    width: 95vh;
     height: 95vh;
-    max-height: 95vh;
 }
 
 tbody {
