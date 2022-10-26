@@ -43,9 +43,10 @@ const play = document.querySelector('#play')
 play.addEventListener('click', (event) => {
     event.preventDefault();
 
+    let pCheck = document.querySelector('#pCheck');
+
     if (themeChosen == null || difficultyChosen == null) {
 
-        let pCheck = document.querySelector('#pCheck');
         if (pCheck != undefined) {
             pCheck.remove()
         }
