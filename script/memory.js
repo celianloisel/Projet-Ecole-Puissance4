@@ -3,6 +3,8 @@ const carte = [];
 var themeChosen = null;
 var difficultyChosen = null;
 var card;
+var timerGlobal = false;
+var move = 0;
 
 const theme = document.querySelector('#theme')
 
@@ -29,6 +31,45 @@ function selectImage() {
     }
 }
 
+
+var card3;
+
+function card2(card) {
+    let card2 = document.getElementById(card)
+
+    card2.style.opacity = '100%'
+
+    var valueCard = card2.getAttribute('value')
+
+    if (valueCard == "false") {
+        move++
+
+        card2.setAttribute('value', 'true')
+
+        if (move == 1) {
+            card3 = card2
+        } else if (move == 2) {
+            var classCard = card2.getAttribute('class')
+            var classCard2 = card3.getAttribute('class')
+
+            if (classCard != classCard2) {
+                setTimeout(() => {
+                    card2.style.opacity = '0%'
+                    card3.style.opacity = '0%'
+
+                    card2.setAttribute('value', 'false')
+                    card3.setAttribute('value', 'false')
+
+                    move = 0
+                }, 1000)
+            } else {
+                move = 0
+            }
+        }
+    }
+}
+
+
 const play = document.querySelector('#play')
 
 play.addEventListener('click', (event) => {
@@ -42,6 +83,8 @@ play.addEventListener('click', (event) => {
         errorMessage.appendChild(errorText)
         menu.appendChild(errorMessage)
     } else {
+
+        var imgNb = 1;
 
         for (let index = 0; index < (difficultyOption[difficultyChosen] * difficultyOption[difficultyChosen]) / 2; index++) {
             selectImage()
@@ -59,13 +102,20 @@ play.addEventListener('click', (event) => {
 
                 var random = Math.floor(Math.random() * (carte.length - 1) + 1)
                 img.src = './assets/images/theme/' + theme.value + '/' + theme.value + ' (' + carte[random - 1] + ').png';
-                carte.splice(random - 1, 1)
 
-                img.style.display = "block"
+                img.style.display = "block";
                 img.style.width = "100%";
-                img.style.height = "100%"
+                img.style.height = "100%";
+                img.style.opacity = "0";
 
-                img.setAttribute('onclick', 'startTimer()')
+                img.setAttribute('id', imgNb)
+                img.setAttribute("class", carte[random - 1])
+                img.setAttribute("value", "false")
+                img.setAttribute('onclick', 'startTimer(); card2(' + imgNb + ')')
+
+                imgNb = imgNb + 1
+
+                carte.splice(random - 1, 1)
 
                 cell.appendChild(img)
                 row.appendChild(cell)
@@ -81,16 +131,20 @@ play.addEventListener('click', (event) => {
 const time = document.querySelector('#time');
 
 function startTimer() {
-    let seconds = 0;
-    let minutes = 0;
-    let seconds_string = '';
-    let minutes_string = '';
-    let timer;
+    if (timerGlobal == false) {
+        let seconds = 0;
+        let minutes = 0;
+        let seconds_string = '';
+        let minutes_string = '';
+        let timer;
 
-    timer = setInterval(() => {
-        seconds > 58 ? ((minutes += 1), (seconds = 0)) : (seconds += 1);
-        seconds_string = seconds > 9 ? `${seconds}` : `0${seconds}`;
-        minutes_string = minutes > 9 ? `${minutes}` : `0${minutes}`;
-        time.innerHTML = `${minutes_string}:${seconds_string}`;
-    }, 1000);
+        timer = setInterval(() => {
+            seconds > 58 ? ((minutes += 1), (seconds = 0)) : (seconds += 1);
+            seconds_string = seconds > 9 ? `${seconds}` : `0${seconds}`;
+            minutes_string = minutes > 9 ? `${minutes}` : `0${minutes}`;
+            time.innerHTML = `${minutes_string}:${seconds_string}`;
+        }, 1000);
+
+        timerGlobal = true
+    }
 }
