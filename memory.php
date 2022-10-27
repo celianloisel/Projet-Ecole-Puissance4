@@ -27,23 +27,10 @@
                 <span>scores:</span>
 				<span class="score"> 0 </span>,
 				<span>time:</span>
-				<span class="time">00:00</span>
+				<span id="time">00:00</span>
 			</h4>
       
-    <section class="memory-game">
-    <div class="memory-card" data-framework="aurelia">
-      <img class="card" src="./assets/images/theme/pokemon/400.png" alt="Aurelia" />
-      <img class="back-card" src="./assets/images/theme/pokemon/470.png" alt="JS Badge" />
-    </div>
-    <div class="memory-card" data-framework="aurelia">
-      <img class="card" src="./assets/images/theme/pokemon/400.png" alt="Aurelia" />
-      <img class="back-card" src="./assets/images/theme/pokemon/470.png" alt="JS Badge" />
-    </div>
-    <div class="memory-card" data-framework="aurelia">
-      <img class="card" src="./assets/images/theme/pokemon/400.png" alt="Aurelia" />
-      <img class="back-card" src="./assets/images/theme/pokemon/470.png" alt="JS Badge" />
-    </div>
-  </section>
+   
   
     <div class="menu">
         <form action="" method="POST">

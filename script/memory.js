@@ -1,17 +1,10 @@
-/////////// Brouillon
-const cards = document.querySelectorAll('.memory-card');
-
-function flipCard() {
-    this.classList.toggle('flip');
-}
-
-cards.forEach(card => card.addEventListener('click', flipCard));
-
-/////////// Propre
 const difficultyOption = [6, 8, 12, 20]
 const carte = [];
 var themeChosen = null;
 var difficultyChosen = null;
+var card;
+var move = 0;
+
 
 const theme = document.querySelector('#theme')
 
@@ -37,6 +30,35 @@ function selectImage() {
         carte.push(carteChosen);
     }
 }
+
+var card3;
+
+function card2(card) {
+    let card2 = document.getElementById(card)
+
+    card2.style.opacity = '100%'
+
+    move++
+
+    if (move == 1) {
+        card3 = card2
+    } else if (move == 2) {
+        var valueCard2 = card2.getAttribute('value')
+        var valueCard3 = card3.getAttribute('value') 
+        
+        if (valueCard2 != valueCard3) {
+            setTimeout(() => {
+                card2.style.opacity = '0%'
+                card3.style.opacity = '0%'
+
+                move = 0
+            }, 1000)
+        } else {
+            move = 0
+        }
+    }
+}
+
 
 const play = document.querySelector('#play')
 
@@ -78,6 +100,8 @@ play.addEventListener('click', (event) => {
         var tbl = document.createElement('table');
         var tbody = document.createElement('tbody');
 
+        var imgNb = 1;
+
         for (let i = 0; i < difficultyOption[difficultyChosen]; i++) {
             var row = document.createElement('tr')
             for (let j = 0; j < difficultyOption[difficultyChosen]; j++) {
@@ -86,13 +110,20 @@ play.addEventListener('click', (event) => {
 
                 var random = Math.floor(Math.random() * (carte.length - 1) + 1)
                 img.src = './assets/images/theme/' + theme.value + '/' + theme.value + ' (' + carte[random - 1] + ').png';
+
+                img.style.display = "block";
+                img.style.width = "100%";
+                img.style.height = "100%";
+                img.style.opacity = "0";
+
+                img.setAttribute('id', imgNb)
+                img.setAttribute("value", carte[random - 1])
+                img.setAttribute('onclick', 'startTimer(); card2(' + imgNb + ')')
+
+                imgNb = imgNb + 1
+
                 carte.splice(random - 1, 1)
 
-                img.style.display = "block"
-                img.style.width = "100%";
-                img.style.height = "100%"
-
-                img.setAttribute('onclick', 'startTimer()')
 
                 cell.appendChild(img)
                 row.appendChild(cell)
