@@ -40,7 +40,16 @@ $bdd->getmybdd();
                 <input type="text" placeholder="Pseudo" name="pseudo">
             </div>
             <div class="user-box">
-                <input type="password" placeholder="Mot de passe" name="passewordbdd">
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Mot de passe">
+                </div>
+                <p>Le mot de passe doit contenir: <br> -8 caractères minimum <br> -Une majuscule <br> -Un chiffre <br> -Un caractère spécial<br> </p>
+                <h5> Sécurité du mot de passe</h5>
+                <div class="progress">
+                    <div class="bar">
+                    </div>
+                </div>
+
             </div>
             <div class="user-box">
                 <input type="password" placeholder="Confirmer le mot de passe" name="pwdb">
@@ -82,6 +91,8 @@ $bdd->getmybdd();
     </div>
 
     <?php require "./view/footer.inc.php"; ?>
+
+    <script src="./script/register.js"></script>
 
 </body>
 
