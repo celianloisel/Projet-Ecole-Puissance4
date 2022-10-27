@@ -30,8 +30,6 @@ function selectImage() {
         carte.push(carteChosen);
     }
 }
-
-
 var card3;
 
 function card2(card) {
@@ -75,16 +73,34 @@ const play = document.querySelector('#play')
 play.addEventListener('click', (event) => {
     event.preventDefault();
 
+    let pCheck = document.querySelector('#pCheck');
+
     if (themeChosen == null || difficultyChosen == null) {
+
+        if (pCheck != undefined) {
+            pCheck.remove()
+        }
+
         var menu = document.getElementById('errorMessage')
         var errorMessage = document.createElement("p")
         const errorText = document.createTextNode("Veuillez choisir un difficulter et un theme !");
+
+        errorMessage.setAttribute('id', 'pCheck')
 
         errorMessage.appendChild(errorText)
         menu.appendChild(errorMessage)
     } else {
 
         var imgNb = 1;
+        
+        if (pCheck != undefined) {
+            pCheck.remove()
+        }
+
+        let tblCheck = document.querySelector('table');
+        if (tblCheck != undefined) {
+            tblCheck.remove()
+        }
 
         for (let index = 0; index < (difficultyOption[difficultyChosen] * difficultyOption[difficultyChosen]) / 2; index++) {
             selectImage()
@@ -93,6 +109,8 @@ play.addEventListener('click', (event) => {
         var parent = document.getElementById('tableau');
         var tbl = document.createElement('table');
         var tbody = document.createElement('tbody');
+
+        var imgNb = 1;
 
         for (let i = 0; i < difficultyOption[difficultyChosen]; i++) {
             var row = document.createElement('tr')

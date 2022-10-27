@@ -21,7 +21,17 @@
     <div class="bannière">
         <h1>Memory</h1>
     </div>
-
+    <h4 class="stats">
+				<span>moves:</span>
+				<span class="move"> 0 </span>,
+                <span>scores:</span>
+				<span class="score"> 0 </span>,
+				<span>time:</span>
+				<span id="time">00:00</span>
+			</h4>
+      
+   
+  
     <div class="menu">
         <form action="" method="POST">
             <select id="theme" name="theme">
