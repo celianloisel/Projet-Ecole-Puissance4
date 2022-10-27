@@ -23,11 +23,10 @@
         </form>
 
         <?php
-        // if (isset($_POST['valider'])) {
-        //     if ($_POST['message'] != "" && (strlen($_POST['message']) > 3)) {   //EST CE QUE JE MET LA VERIF LA ? Messag d'erreur ?
-        //         $bdd->insertMessage('messages', $_POST['message']);
-        //     }
-        // }
+            //dans $_POST['message'] est stocké les data récupéré par chat_ajax.js qui a ensuite utilisé une methode post
+            if (strlen($_POST['message']) > 3) {   //n'envoie que les message de plus de 3 caractère
+                $bdd->insertMessage('messages', $_POST['message']); 
+            }
         ?>
     </div>
 </div>

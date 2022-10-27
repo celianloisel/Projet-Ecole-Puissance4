@@ -18,7 +18,6 @@ sendMessageForm.addEventListener('submit' , (event) => {
     // cette partie recupere les donnée en lisant le formulaire html
     const inputs = event.target.querySelectorAll('input'); //donc la on prend tout les input htmml de notre sendMessageForm
     const formData = {}; 
-    console.log(formData);
     for (let input of inputs) { 
         if (input.name) 
             formData[input.name] = input.value ;
@@ -26,10 +25,6 @@ sendMessageForm.addEventListener('submit' , (event) => {
     console.log(formData);
     
     //cette partie s'occupe de renvoyer les donnée au php pour que le programme continue
-    fetch('send_message.php', createFetchOptions(formData))
-    .then (response => { return response.text() })  //transform le body de la reponse en text classique
-    .then (data => {        
-        console.log(data) //sucess = ok ou error = error name
-    })
-    
+    fetch('chat.php', createFetchOptions(formData))
+    .then (response => { return response.text() })  //transform le body de la reponse en text classique    
 })
