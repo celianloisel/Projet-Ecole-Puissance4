@@ -3,8 +3,10 @@ const carte = [];
 var themeChosen = null;
 var difficultyChosen = null;
 var card;
+var timerGlobal = false;
 var move = 0;
-
+let seconds_string = '';
+let minutes_string = '';
 
 const theme = document.querySelector('#theme')
 
@@ -30,31 +32,56 @@ function selectImage() {
         carte.push(carteChosen);
     }
 }
-
 var card3;
 
+var timeEnd;
+
 function card2(card) {
+    var cond = true;
+
     let card2 = document.getElementById(card)
 
     card2.style.opacity = '100%'
 
-    move++
+    var valueCard = card2.getAttribute('value')
 
-    if (move == 1) {
-        card3 = card2
-    } else if (move == 2) {
-        var valueCard2 = card2.getAttribute('value')
-        var valueCard3 = card3.getAttribute('value') 
-        
-        if (valueCard2 != valueCard3) {
-            setTimeout(() => {
-                card2.style.opacity = '0%'
-                card3.style.opacity = '0%'
+    if (valueCard == "false") {
+        move++
 
+        card2.setAttribute('value', 'true')
+
+        if (move == 1) {
+            card3 = card2
+        } else if (move == 2) {
+            var classCard = card2.getAttribute('class')
+            var classCard2 = card3.getAttribute('class')
+
+            if (classCard != classCard2) {
+                setTimeout(() => {
+                    card2.style.opacity = '0%'
+                    card3.style.opacity = '0%'
+
+                    card2.setAttribute('value', 'false')
+                    card3.setAttribute('value', 'false')
+
+                    move = 0
+                }, 1000)
+            } else {
                 move = 0
-            }, 1000)
-        } else {
-            move = 0
+            }
+
+            var opacityCard = document.querySelectorAll('td > img')
+
+            opacityCard.forEach(element => {
+                if (element.style.opacity == "0") {
+                    cond = false;
+                }
+            });
+            
+            if (cond) {
+                timeEnd = `${minutes_string}:${seconds_string}`;
+                
+            }
         }
     }
 }
@@ -83,6 +110,8 @@ play.addEventListener('click', (event) => {
         menu.appendChild(errorMessage)
     } else {
 
+        var imgNb = 1;
+        
         if (pCheck != undefined) {
             pCheck.remove()
         }
@@ -117,13 +146,13 @@ play.addEventListener('click', (event) => {
                 img.style.opacity = "0";
 
                 img.setAttribute('id', imgNb)
-                img.setAttribute("value", carte[random - 1])
+                img.setAttribute("class", carte[random - 1])
+                img.setAttribute("value", "false")
                 img.setAttribute('onclick', 'startTimer(); card2(' + imgNb + ')')
 
                 imgNb = imgNb + 1
 
                 carte.splice(random - 1, 1)
-
 
                 cell.appendChild(img)
                 row.appendChild(cell)
@@ -139,16 +168,20 @@ play.addEventListener('click', (event) => {
 const time = document.querySelector('#time');
 
 function startTimer() {
-    let seconds = 0;
-    let minutes = 0;
-    let seconds_string = '';
-    let minutes_string = '';
-    let timer;
+    if (timerGlobal == false) {
+        let seconds = 0;
+        let minutes = 0;
+        seconds_string = '';
+        minutes_string = '';
+        let timer;
 
-    timer = setInterval(() => {
-        seconds > 58 ? ((minutes += 1), (seconds = 0)) : (seconds += 1);
-        seconds_string = seconds > 9 ? `${seconds}` : `0${seconds}`;
-        minutes_string = minutes > 9 ? `${minutes}` : `0${minutes}`;
-        time.innerHTML = `${minutes_string}:${seconds_string}`;
-    }, 1000);
+        timer = setInterval(() => {
+            seconds > 58 ? ((minutes += 1), (seconds = 0)) : (seconds += 1);
+            seconds_string = seconds > 9 ? `${seconds}` : `0${seconds}`;
+            minutes_string = minutes > 9 ? `${minutes}` : `0${minutes}`;
+            time.innerHTML = `${minutes_string}:${seconds_string}`;
+        }, 1000);
+
+        timerGlobal = true
+    }
 }
