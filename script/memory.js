@@ -5,6 +5,8 @@ var difficultyChosen = null;
 var card;
 var timerGlobal = false;
 var move = 0;
+let seconds_string = '';
+let minutes_string = '';
 
 const theme = document.querySelector('#theme')
 
@@ -32,7 +34,11 @@ function selectImage() {
 }
 var card3;
 
+var timeEnd;
+
 function card2(card) {
+    var cond = true;
+
     let card2 = document.getElementById(card)
 
     card2.style.opacity = '100%'
@@ -62,6 +68,19 @@ function card2(card) {
                 }, 1000)
             } else {
                 move = 0
+            }
+
+            var opacityCard = document.querySelectorAll('td > img')
+
+            opacityCard.forEach(element => {
+                if (element.style.opacity == "0") {
+                    cond = false;
+                }
+            });
+            
+            if (cond) {
+                timeEnd = `${minutes_string}:${seconds_string}`;
+                
             }
         }
     }
@@ -152,8 +171,8 @@ function startTimer() {
     if (timerGlobal == false) {
         let seconds = 0;
         let minutes = 0;
-        let seconds_string = '';
-        let minutes_string = '';
+        seconds_string = '';
+        minutes_string = '';
         let timer;
 
         timer = setInterval(() => {
