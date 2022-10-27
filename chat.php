@@ -10,7 +10,6 @@
         require_once('./include/database.inc.php');
 
         $bdd = new BDD('localhost', 'puissance4', 'root', '', 'bdd');
-
         $bdd->getmybdd();
 
         $bdd->selectMessage('messages');
@@ -18,16 +17,19 @@
         ?>
     </div>
     <div class="message">
-        <form action="./memory.php" method="POST">
+        <form action="./memory.php" method="POST" id="message_form">
             <input type="text" placeholder="Message" name="message">
             <button type="submit" name="valider"><i class="fa-solid fa-paper-plane"></i></button>
         </form>
+
         <?php
-        if (isset($_POST['valider'])) {
-            if ($_POST['message'] != "") {
-                $bdd->insertMessage('messages', $_POST['message']);
-            }
-        }
+        // if (isset($_POST['valider'])) {
+        //     if ($_POST['message'] != "" && (strlen($_POST['message']) > 3)) {   //EST CE QUE JE MET LA VERIF LA ? Messag d'erreur ?
+        //         $bdd->insertMessage('messages', $_POST['message']);
+        //     }
+        // }
         ?>
     </div>
 </div>
+
+<script src="./script/chat_ajax.js"></script>
