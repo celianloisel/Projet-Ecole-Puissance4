@@ -5,6 +5,7 @@ var difficultyChosen = null;
 var card;
 var move = 0;
 
+
 const theme = document.querySelector('#theme')
 
 theme.addEventListener('change', () => {
@@ -64,14 +65,32 @@ const play = document.querySelector('#play')
 play.addEventListener('click', (event) => {
     event.preventDefault();
 
+    let pCheck = document.querySelector('#pCheck');
+
     if (themeChosen == null || difficultyChosen == null) {
+
+        if (pCheck != undefined) {
+            pCheck.remove()
+        }
+
         var menu = document.getElementById('errorMessage')
         var errorMessage = document.createElement("p")
         const errorText = document.createTextNode("Veuillez choisir un difficulter et un theme !");
 
+        errorMessage.setAttribute('id', 'pCheck')
+
         errorMessage.appendChild(errorText)
         menu.appendChild(errorMessage)
     } else {
+
+        if (pCheck != undefined) {
+            pCheck.remove()
+        }
+
+        let tblCheck = document.querySelector('table');
+        if (tblCheck != undefined) {
+            tblCheck.remove()
+        }
 
         for (let index = 0; index < (difficultyOption[difficultyChosen] * difficultyOption[difficultyChosen]) / 2; index++) {
             selectImage()
