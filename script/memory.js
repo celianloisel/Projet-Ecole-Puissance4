@@ -21,6 +21,8 @@ difficulty.addEventListener('change', () => {
     difficultyChosen = difficulty.selectedIndex - 1;
 })
 
+// code pop_up
+
 
 function selectImage() {
     var carteChosen = Math.floor(Math.random() * (201 - 1) + 1);
@@ -80,7 +82,14 @@ function card2(card) {
             
             if (cond) {
                 timeEnd = `${minutes_string}:${seconds_string}`;
+                console.log(timeEnd);
+                openModal();
+                //on inject dans les balises <p> les variable javascript APRES la fin de la partie pour qu'elle ne soit pas nul
+                document.getElementById('display_temps_joueur').innerHTML = timeEnd;
+                document.getElementById('display_infos_joueur').innerHTML = move;
+                document.getElementById('display_score_joueur').innerHTML = finalScore;
                 
+                // displayResult();
             }
         }
     }
@@ -185,3 +194,70 @@ function startTimer() {
         timerGlobal = true
     }
 }
+
+
+//*------------------------------- code pour la pop up -------------------------------*//
+//definition des variables
+var openModalButtons = document.querySelectorAll('[data-modal-target]')
+var closeModalButtons = document.querySelectorAll('[data-close-button]')
+var overlay = document.getElementById('overlay')
+var modal = document.getElementById('modal')
+var finalScore = 10000;
+
+//faire apparaitre les variables de jeu dans la pop up
+//ne marche pas car les variable sont injecté dès que la page est chargé et non pas quand on a fini la partie
+// console.log(timeEnd);
+// document.getElementById('display_temps_joueur').innerHTML = timeEnd;
+// document.getElementById('display_infos_joueur').innerHTML = move;
+// document.getElementById('display_score_joueur').innerHTML = finalScore;
+
+overlay.addEventListener('click', () => {
+  closeModal();
+})
+
+function openModal() {
+  modal.classList.add('active')
+  overlay.classList.add('active')
+}
+
+function closeModal() {
+  modal.classList.remove('active')
+  overlay.classList.remove('active')
+}
+//fin code pop up
+
+
+
+
+//*------------------------------- code pour envoyer les variables de score en BDD -------------------------------*//
+function createFetchOptions (bodydata) {
+    return {
+        method : 'POST' , 
+        headers : {
+            'Content-Type' : 'application/x-www-form-urlencoded'  //format URL
+        },
+        body: new URLSearchParams(bodydata) //encoder mon objet JS bodydata au format URL annoncé dans le headers pour que le PHP le comprenen
+    }
+}
+
+function envoyerScore () {
+
+    // cette partie recupere les donnée en lisant le formulaire html
+    const formData = {}; 
+    // formData['score'] = finalScore;
+    formData['temps'] = timeEnd ;
+    formData['coups'] = move ;
+    console.log(formData); 
+    
+ 
+    console.log(formData);
+    
+    console.log('avant fetch');
+    fetch('./script/send_score.php', createFetchOptions(formData))
+    .then (response => { return response.text() }) //then(result) //transform le body de la reponse en text classique   // json stringify c'est pour convertif un objec JS en string
+    console.log("après fetch")
+}
+
+
+
+//./include/send_score.php
