@@ -7,6 +7,7 @@ var timerGlobal = false;
 var move = 0;
 let seconds_string = '';
 let minutes_string = '';
+var wait = false;
 
 const theme = document.querySelector('#theme')
 
@@ -37,50 +38,56 @@ var card3;
 var timeEnd;
 
 function card2(card) {
-    var cond = true;
+    if (!wait) {
 
-    let card2 = document.getElementById(card)
+        var cond = true;
 
-    card2.style.opacity = '100%'
+        let card2 = document.getElementById(card)
 
-    var valueCard = card2.getAttribute('value')
+        card2.style.opacity = '100%'
 
-    if (valueCard == "false") {
-        move++
+        var valueCard = card2.getAttribute('value')
 
-        card2.setAttribute('value', 'true')
+        if (valueCard == "false") {
+            move++
 
-        if (move == 1) {
-            card3 = card2
-        } else if (move == 2) {
-            var classCard = card2.getAttribute('class')
-            var classCard2 = card3.getAttribute('class')
+            card2.setAttribute('value', 'true')
 
-            if (classCard != classCard2) {
-                setTimeout(() => {
-                    card2.style.opacity = '0%'
-                    card3.style.opacity = '0%'
+            if (move == 1) {
+                card3 = card2
+            } else if (move == 2) {
+                wait = true
+                var classCard = card2.getAttribute('class')
+                var classCard2 = card3.getAttribute('class')
 
-                    card2.setAttribute('value', 'false')
-                    card3.setAttribute('value', 'false')
+                if (classCard != classCard2) {
+                    setTimeout(() => {
+                        card2.style.opacity = '0%'
+                        card3.style.opacity = '0%'
 
+                        card2.setAttribute('value', 'false')
+                        card3.setAttribute('value', 'false')
+
+                        move = 0
+                        wait = false
+                    }, 1000)
+                } else {
                     move = 0
-                }, 1000)
-            } else {
-                move = 0
-            }
-
-            var opacityCard = document.querySelectorAll('td > img')
-
-            opacityCard.forEach(element => {
-                if (element.style.opacity == "0") {
-                    cond = false;
+                    wait = false
                 }
-            });
-            
-            if (cond) {
-                timeEnd = `${minutes_string}:${seconds_string}`;
-                
+
+                var opacityCard = document.querySelectorAll('td > img')
+
+                opacityCard.forEach(element => {
+                    if (element.style.opacity == "0") {
+                        cond = false;
+                    }
+                });
+
+                if (cond) {
+                    timeEnd = `${minutes_string}:${seconds_string}`;
+
+                }
             }
         }
     }
@@ -111,7 +118,7 @@ play.addEventListener('click', (event) => {
     } else {
 
         var imgNb = 1;
-        
+
         if (pCheck != undefined) {
             pCheck.remove()
         }
