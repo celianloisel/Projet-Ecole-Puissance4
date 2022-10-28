@@ -1,5 +1,4 @@
 const sendMessageForm = document.querySelector('#message_form')
-console.log("hello JS"); 
 
 //fonction reutilisable pour définir les paramètre de notre fetch 
 function createFetchOptions (bodydata) { 
@@ -22,7 +21,6 @@ sendMessageForm.addEventListener('submit' , (event) => {
         if (input.name) 
             formData[input.name] = input.value ;
     }
-    console.log(formData);
     
     //cette partie s'occupe de renvoyer les donnée au php pour que le programme continue
     fetch('chat.php', createFetchOptions(formData))

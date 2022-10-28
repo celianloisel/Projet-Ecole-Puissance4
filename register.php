@@ -41,7 +41,7 @@ $bdd->getmybdd();
             </div>
             <div class="user-box">
                 <div class="input-group">
-                    <input type="password" id="password" placeholder="Mot de passe">
+                    <input type="password" id="password" placeholder="Mot de passe" name="passewordbdd">
                 </div>
                 <p>Le mot de passe doit contenir: <br> -8 caractères minimum <br> -Une majuscule <br> -Un chiffre <br> -Un caractère spécial<br> </p>
                 <h5> Sécurité du mot de passe</h5>

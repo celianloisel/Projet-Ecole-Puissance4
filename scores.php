@@ -76,7 +76,7 @@
                     $onlyMe = $_POST['onlyMe'];
                 }
 
-                if (isset($_POST['onlyMe'])) {
+                if (isset($_POST['sorting'])) {
                     $sorting = $_POST['sorting'];
                 }
 

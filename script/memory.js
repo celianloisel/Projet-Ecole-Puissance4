@@ -88,7 +88,7 @@ function card2(card) {
 
                 if (cond) {
                     timeEnd = `${minutes_string}:${seconds_string}`;
-                    console.log(timeEnd);
+                    console.log(timeEnd)
                     openModal();
                     //on inject dans les balises <p> les variable javascript APRES la fin de la partie pour qu'elle ne soit pas nul
                     document.getElementById('display_temps_joueur').innerHTML = timeEnd;
@@ -105,59 +105,55 @@ function card2(card) {
 }
 
 
-    const play = document.querySelector('#play')
+function playGo() {
+    let pCheck = document.querySelector('#pCheck');
 
-    play.addEventListener('click', (event) => {
-        event.preventDefault();
+    if (themeChosen == null || difficultyChosen == null) {
 
-        let pCheck = document.querySelector('#pCheck');
+        if (pCheck != undefined) {
+            pCheck.remove()
+        }
 
-        if (themeChosen == null || difficultyChosen == null) {
+        var menu = document.getElementById('errorMessage')
+        var errorMessage = document.createElement("p")
+        const errorText = document.createTextNode("Veuillez choisir un difficulter et un theme !");
 
-            if (pCheck != undefined) {
-                pCheck.remove()
-            }
+        errorMessage.setAttribute('id', 'pCheck')
 
-            var menu = document.getElementById('errorMessage')
-            var errorMessage = document.createElement("p")
-            const errorText = document.createTextNode("Veuillez choisir un difficulter et un theme !");
-
-            errorMessage.setAttribute('id', 'pCheck')
-
-            errorMessage.appendChild(errorText)
-            menu.appendChild(errorMessage)
-        } else {
+        errorMessage.appendChild(errorText)
+        menu.appendChild(errorMessage)
+    } else {
 
 
-            var imgNb = 1;
+        var imgNb = 1;
 
-            if (pCheck != undefined) {
-                pCheck.remove()
-            }
+        if (pCheck != undefined) {
+            pCheck.remove()
+        }
 
-            let tblCheck = document.querySelector('table');
-            if (tblCheck != undefined) {
-                tblCheck.remove()
-            }
+        let tblCheck = document.querySelector('table');
+        if (tblCheck != undefined) {
+            tblCheck.remove()
+        }
 
-            for (let index = 0; index < (difficultyOption[difficultyChosen] * difficultyOption[difficultyChosen]) / 2; index++) {
-                selectImage()
-            }
+        for (let index = 0; index < (difficultyOption[difficultyChosen] * difficultyOption[difficultyChosen]) / 2; index++) {
+            selectImage()
+        }
 
-            var parent = document.getElementById('tableau');
-            var tbl = document.createElement('table');
-            var tbody = document.createElement('tbody');
+        var parent = document.getElementById('tableau');
+        var tbl = document.createElement('table');
+        var tbody = document.createElement('tbody');
 
-            var imgNb = 1;
+        var imgNb = 1;
 
-            for (let i = 0; i < difficultyOption[difficultyChosen]; i++) {
-                var row = document.createElement('tr')
-                for (let j = 0; j < difficultyOption[difficultyChosen]; j++) {
-                    var cell = document.createElement("td")
-                    var img = document.createElement('img')
+        for (let i = 0; i < difficultyOption[difficultyChosen]; i++) {
+            var row = document.createElement('tr')
+            for (let j = 0; j < difficultyOption[difficultyChosen]; j++) {
+                var cell = document.createElement("td")
+                var img = document.createElement('img')
 
-                    var random = Math.floor(Math.random() * (carte.length - 1) + 1)
-                    img.src = './assets/images/theme/' + theme.value + '/' + theme.value + ' (' + carte[random - 1] + ').png';
+                var random = Math.floor(Math.random() * (carte.length - 1) + 1)
+                img.src = './assets/images/theme/' + theme.value + '/' + theme.value + ' (' + carte[random - 1] + ').png';
 
                 img.style.display = "block";
                 img.style.width = "100%";
@@ -169,51 +165,43 @@ function card2(card) {
                 cell.style.transform = "scale(0.9)";
                 cell.style.boxShadow = "5px 5px 5px black inset"
 
-                    img.setAttribute('id', imgNb)
-                    img.setAttribute("class", carte[random - 1])
-                    img.setAttribute("value", "false")
-                    img.setAttribute('onclick', 'startTimer(); card2(' + imgNb + ')')
+                img.setAttribute('id', imgNb)
+                img.setAttribute("class", carte[random - 1])
+                img.setAttribute("value", "false")
+                img.setAttribute('onclick', 'startTimer(); card2(' + imgNb + ')')
 
-                    imgNb = imgNb + 1
+                imgNb = imgNb + 1
 
-                    carte.splice(random - 1, 1)
+                carte.splice(random - 1, 1)
 
-                    cell.appendChild(img)
-                    row.appendChild(cell)
-                }
-                tbody.appendChild(row)
+                cell.appendChild(img)
+                row.appendChild(cell)
             }
-            tbl.appendChild(tbody)
-            parent.appendChild(tbl)
+            tbody.appendChild(row)
         }
-    })
-
-
-    const time = document.querySelector('#time');
-    var finalScore = 10000;
-    function startTimer() {
-        if (timerGlobal == false) {
-            let seconds = 0;
-            let minutes = 0;
-            seconds_string = '';
-            minutes_string = '';
-            let timer;
-
-            timer = setInterval(() => {
-                seconds > 58 ? ((minutes += 1), (seconds = 0)) : (seconds += 1);
-                seconds_string = seconds > 9 ? `${seconds}` : `0${seconds}`;
-                minutes_string = minutes > 9 ? `${minutes}` : `0${minutes}`;
-                time.innerHTML = `${minutes_string}:${seconds_string}`;
-                finalScore = finalScore - 10;
-            }, 1000);
-
-            timerGlobal = true
-        }
+        tbl.appendChild(tbody)
+        parent.appendChild(tbl)
     }
+}
 
+
+const play = document.querySelector('#play')
+
+play.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    playGo()
+})
+
+const modalRejouer = document.getElementById('close_button')
+
+modalRejouer.addEventListener('click', () => {
+
+})
 
 const time = document.querySelector('#time');
 var finalScore = 10000;
+
 function startTimer() {
     if (timerGlobal == false) {
         let seconds = 0;
@@ -221,6 +209,7 @@ function startTimer() {
         seconds_string = '';
         minutes_string = '';
         let timer;
+        timerGlobal = true
 
         timer = setInterval(() => {
             seconds > 58 ? ((minutes += 1), (seconds = 0)) : (seconds += 1);
@@ -229,52 +218,8 @@ function startTimer() {
             time.innerHTML = `${minutes_string}:${seconds_string}`;
             finalScore = finalScore - 10;
         }, 1000);
-    //*------------------------------- code pour la pop up -------------------------------*//
-    //definition des variables
-    var openModalButtons = document.querySelectorAll('[data-modal-target]')
-    var closeModalButtons = document.querySelectorAll('[data-close-button]')
-    var overlay = document.getElementById('overlay')
-    var modal = document.getElementById('modal')
-    // var finalScore = 10000 - (seconds_string + (minutes_string * 60));
-
-    //faire apparaitre les variables de jeu dans la pop up
-    //ne marche pas car les variable sont injecté dès que la page est chargé et non pas quand on a fini la partie
-    // console.log(timeEnd);
-    // document.getElementById('display_temps_joueur').innerHTML = timeEnd;
-    // document.getElementById('display_infos_joueur').innerHTML = move;
-    // document.getElementById('display_score_joueur').innerHTML = finalScore;
-
-    overlay.addEventListener('click', () => {
-        closeModal();
-    })
-
-    function openModal() {
-        modal.classList.add('active')
-        overlay.classList.add('active')
-    }
-
-    function closeModal() {
-        modal.classList.remove('active')
-        overlay.classList.remove('active')
-    }
-    //fin code pop up
-
-
-
-
-    //*------------------------------- code pour envoyer les variables de score en BDD -------------------------------*//
-    function createFetchOptions(bodydata) {
-        return {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'  //format URL
-            },
-            body: new URLSearchParams(bodydata) //encoder mon objet JS bodydata au format URL annoncé dans le headers pour que le PHP le comprenen
-        }
     }
 }
-
-
 //*------------------------------- code pour la pop up -------------------------------*//
 //definition des variables
 var openModalButtons = document.querySelectorAll('[data-modal-target]')
@@ -336,6 +281,7 @@ function envoyerScore() {
         .then(response => { return response.text() }) //then(result) //transform le body de la reponse en text classique   // json stringify c'est pour convertif un objec JS en string
     console.log("après fetch")
 }
+
 
 
 

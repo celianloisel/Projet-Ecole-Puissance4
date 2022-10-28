@@ -23,16 +23,12 @@
         <h1>Memory</h1>
     </div>
     <h4 class="stats">
-				<span>moves:</span>
-				<span class="move"> 0 </span>,
-                <span>scores:</span>
-				<span class="score"> 0 </span>,
-				<span>time:</span>
-				<span id="time">00:00</span>
-			</h4>
-      
-   
-  
+        <span>time:</span>
+        <span id="time">00:00</span>
+    </h4>
+
+
+
     <div class="menu">
         <form action="" method="POST">
             <select id="theme" name="theme">
@@ -55,16 +51,14 @@
     <div id="errorMessage"></div>
 
     <div id="tableau"></div>
-    <div id="time">00:00</div>
 
     <!-- bouton pour faire apparaitre la pop-up  -->
-    <button onclick="openModal()">test</button>
 
     <div class="modal" id="modal">
         <div class="modal_gif"><img src="./assets/images/pop_up/girl_dance.gif" alt=""></div>
         <div class="modal_header">
             <div class="title">Votre score !</div>
-            <button class="close_button" onclick="closeModal()">&times;</button>
+            <button id="close_button" class="close_button" onclick="closeModal()">&times;</button>
         </div>
         <div class="modal_body">
             <div class="modal_text">
@@ -75,36 +69,13 @@
                 <h3>Score final :</h3>
                 <p id="display_score_joueur"></p>
             </div>
-            <button onclick="" class="replay_button">REJOUER !</button>
+            <button onclick="closeModal();playGo()" class="replay_button">REJOUER !</button>
         </div>
     </div>
     <!-- fond coloré  -->
     <div id="overlay"></div>
 
     <!-- JS pour la pop up -->
-
-    <!-- bouton pour tester l'envoie du score -->
-    <h1>Test AJAX</h1>
-    <button onclick="envoyerScore ()"> clicker </button>
-    <!-- recupération des donnée de l'ajax -->
-
-    <?php 
-        function displayResult() {
-            
-            echo ('hello Score    ;');
-            // var_dump($_POST);
-            // echo $_POST 
-        
-            // $scoreToSend = $_POST['score'];
-            $timeToSend = $_POST['temps'];
-            $coupToSend = $_POST['coups'];
-        
-            echo ('voici MES variable    :');
-            // echo $scoreToSend;
-            echo $timeToSend;
-            echo $coupToSend;
-        }
-    ?>
 
     <?php require "./chat.php"; ?>
 
