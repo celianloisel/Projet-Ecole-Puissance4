@@ -86,184 +86,184 @@ function card2(card) {
                     }
                 });
 
-            if (cond) {
-                timeEnd = `${minutes_string}:${seconds_string}`;
-                console.log(timeEnd);
-                openModal();
-                //on inject dans les balises <p> les variable javascript APRES la fin de la partie pour qu'elle ne soit pas nul
-                document.getElementById('display_temps_joueur').innerHTML = timeEnd;
-                document.getElementById('display_infos_joueur').innerHTML = move;
-                document.getElementById('display_score_joueur').innerHTML = finalScore;
-                
-                // displayResult();
+                if (cond) {
+                    timeEnd = `${minutes_string}:${seconds_string}`;
+                    console.log(timeEnd);
+                    openModal();
+                    //on inject dans les balises <p> les variable javascript APRES la fin de la partie pour qu'elle ne soit pas nul
+                    document.getElementById('display_temps_joueur').innerHTML = timeEnd;
+                    document.getElementById('display_infos_joueur').innerHTML = move;
+                    document.getElementById('display_score_joueur').innerHTML = finalScore;
+
+                    // displayResult();
+                }
             }
-            });
         }
     }
 }
 
 
-const play = document.querySelector('#play')
+    const play = document.querySelector('#play')
 
-play.addEventListener('click', (event) => {
-    event.preventDefault();
+    play.addEventListener('click', (event) => {
+        event.preventDefault();
 
-    let pCheck = document.querySelector('#pCheck');
+        let pCheck = document.querySelector('#pCheck');
 
-    if (themeChosen == null || difficultyChosen == null) {
+        if (themeChosen == null || difficultyChosen == null) {
 
-        if (pCheck != undefined) {
-            pCheck.remove()
-        }
-
-        var menu = document.getElementById('errorMessage')
-        var errorMessage = document.createElement("p")
-        const errorText = document.createTextNode("Veuillez choisir un difficulter et un theme !");
-
-        errorMessage.setAttribute('id', 'pCheck')
-
-        errorMessage.appendChild(errorText)
-        menu.appendChild(errorMessage)
-    } else {
-
-        var imgNb = 1;
-
-        if (pCheck != undefined) {
-            pCheck.remove()
-        }
-
-        let tblCheck = document.querySelector('table');
-        if (tblCheck != undefined) {
-            tblCheck.remove()
-        }
-
-        for (let index = 0; index < (difficultyOption[difficultyChosen] * difficultyOption[difficultyChosen]) / 2; index++) {
-            selectImage()
-        }
-
-        var parent = document.getElementById('tableau');
-        var tbl = document.createElement('table');
-        var tbody = document.createElement('tbody');
-
-        var imgNb = 1;
-
-        for (let i = 0; i < difficultyOption[difficultyChosen]; i++) {
-            var row = document.createElement('tr')
-            for (let j = 0; j < difficultyOption[difficultyChosen]; j++) {
-                var cell = document.createElement("td")
-                var img = document.createElement('img')
-
-                var random = Math.floor(Math.random() * (carte.length - 1) + 1)
-                img.src = './assets/images/theme/' + theme.value + '/' + theme.value + ' (' + carte[random - 1] + ').png';
-
-                img.style.display = "block";
-                img.style.width = "100%";
-                img.style.height = "100%";
-                img.style.opacity = "0";
-
-                img.setAttribute('id', imgNb)
-                img.setAttribute("class", carte[random - 1])
-                img.setAttribute("value", "false")
-                img.setAttribute('onclick', 'startTimer(); card2(' + imgNb + ')')
-
-                imgNb = imgNb + 1
-
-                carte.splice(random - 1, 1)
-
-                cell.appendChild(img)
-                row.appendChild(cell)
+            if (pCheck != undefined) {
+                pCheck.remove()
             }
-            tbody.appendChild(row)
+
+            var menu = document.getElementById('errorMessage')
+            var errorMessage = document.createElement("p")
+            const errorText = document.createTextNode("Veuillez choisir un difficulter et un theme !");
+
+            errorMessage.setAttribute('id', 'pCheck')
+
+            errorMessage.appendChild(errorText)
+            menu.appendChild(errorMessage)
+        } else {
+
+            var imgNb = 1;
+
+            if (pCheck != undefined) {
+                pCheck.remove()
+            }
+
+            let tblCheck = document.querySelector('table');
+            if (tblCheck != undefined) {
+                tblCheck.remove()
+            }
+
+            for (let index = 0; index < (difficultyOption[difficultyChosen] * difficultyOption[difficultyChosen]) / 2; index++) {
+                selectImage()
+            }
+
+            var parent = document.getElementById('tableau');
+            var tbl = document.createElement('table');
+            var tbody = document.createElement('tbody');
+
+            var imgNb = 1;
+
+            for (let i = 0; i < difficultyOption[difficultyChosen]; i++) {
+                var row = document.createElement('tr')
+                for (let j = 0; j < difficultyOption[difficultyChosen]; j++) {
+                    var cell = document.createElement("td")
+                    var img = document.createElement('img')
+
+                    var random = Math.floor(Math.random() * (carte.length - 1) + 1)
+                    img.src = './assets/images/theme/' + theme.value + '/' + theme.value + ' (' + carte[random - 1] + ').png';
+
+                    img.style.display = "block";
+                    img.style.width = "100%";
+                    img.style.height = "100%";
+                    img.style.opacity = "0";
+
+                    img.setAttribute('id', imgNb)
+                    img.setAttribute("class", carte[random - 1])
+                    img.setAttribute("value", "false")
+                    img.setAttribute('onclick', 'startTimer(); card2(' + imgNb + ')')
+
+                    imgNb = imgNb + 1
+
+                    carte.splice(random - 1, 1)
+
+                    cell.appendChild(img)
+                    row.appendChild(cell)
+                }
+                tbody.appendChild(row)
+            }
+            tbl.appendChild(tbody)
+            parent.appendChild(tbl)
         }
-        tbl.appendChild(tbody)
-        parent.appendChild(tbl)
+    })
+
+
+    const time = document.querySelector('#time');
+
+    function startTimer() {
+        if (timerGlobal == false) {
+            let seconds = 0;
+            let minutes = 0;
+            seconds_string = '';
+            minutes_string = '';
+            let timer;
+
+            timer = setInterval(() => {
+                seconds > 58 ? ((minutes += 1), (seconds = 0)) : (seconds += 1);
+                seconds_string = seconds > 9 ? `${seconds}` : `0${seconds}`;
+                minutes_string = minutes > 9 ? `${minutes}` : `0${minutes}`;
+                time.innerHTML = `${minutes_string}:${seconds_string}`;
+            }, 1000);
+
+            timerGlobal = true
+        }
     }
-})
 
 
-const time = document.querySelector('#time');
+    //*------------------------------- code pour la pop up -------------------------------*//
+    //definition des variables
+    var openModalButtons = document.querySelectorAll('[data-modal-target]')
+    var closeModalButtons = document.querySelectorAll('[data-close-button]')
+    var overlay = document.getElementById('overlay')
+    var modal = document.getElementById('modal')
+    var finalScore = 10000;
 
-function startTimer() {
-    if (timerGlobal == false) {
-        let seconds = 0;
-        let minutes = 0;
-        seconds_string = '';
-        minutes_string = '';
-        let timer;
+    //faire apparaitre les variables de jeu dans la pop up
+    //ne marche pas car les variable sont injecté dès que la page est chargé et non pas quand on a fini la partie
+    // console.log(timeEnd);
+    // document.getElementById('display_temps_joueur').innerHTML = timeEnd;
+    // document.getElementById('display_infos_joueur').innerHTML = move;
+    // document.getElementById('display_score_joueur').innerHTML = finalScore;
 
-        timer = setInterval(() => {
-            seconds > 58 ? ((minutes += 1), (seconds = 0)) : (seconds += 1);
-            seconds_string = seconds > 9 ? `${seconds}` : `0${seconds}`;
-            minutes_string = minutes > 9 ? `${minutes}` : `0${minutes}`;
-            time.innerHTML = `${minutes_string}:${seconds_string}`;
-        }, 1000);
+    overlay.addEventListener('click', () => {
+        closeModal();
+    })
 
-        timerGlobal = true
+    function openModal() {
+        modal.classList.add('active')
+        overlay.classList.add('active')
     }
-}
 
-
-//*------------------------------- code pour la pop up -------------------------------*//
-//definition des variables
-var openModalButtons = document.querySelectorAll('[data-modal-target]')
-var closeModalButtons = document.querySelectorAll('[data-close-button]')
-var overlay = document.getElementById('overlay')
-var modal = document.getElementById('modal')
-var finalScore = 10000;
-
-//faire apparaitre les variables de jeu dans la pop up
-//ne marche pas car les variable sont injecté dès que la page est chargé et non pas quand on a fini la partie
-// console.log(timeEnd);
-// document.getElementById('display_temps_joueur').innerHTML = timeEnd;
-// document.getElementById('display_infos_joueur').innerHTML = move;
-// document.getElementById('display_score_joueur').innerHTML = finalScore;
-
-overlay.addEventListener('click', () => {
-  closeModal();
-})
-
-function openModal() {
-  modal.classList.add('active')
-  overlay.classList.add('active')
-}
-
-function closeModal() {
-  modal.classList.remove('active')
-  overlay.classList.remove('active')
-}
-//fin code pop up
-
-
-
-
-//*------------------------------- code pour envoyer les variables de score en BDD -------------------------------*//
-function createFetchOptions (bodydata) {
-    return {
-        method : 'POST' , 
-        headers : {
-            'Content-Type' : 'application/x-www-form-urlencoded'  //format URL
-        },
-        body: new URLSearchParams(bodydata) //encoder mon objet JS bodydata au format URL annoncé dans le headers pour que le PHP le comprenen
+    function closeModal() {
+        modal.classList.remove('active')
+        overlay.classList.remove('active')
     }
-}
+    //fin code pop up
 
-function envoyerScore () {
 
-    // cette partie recupere les donnée en lisant le formulaire html
-    const formData = {}; 
-    // formData['score'] = finalScore;
-    formData['temps'] = timeEnd ;
-    formData['coups'] = move ;
-    console.log(formData); 
-    
- 
-    console.log(formData);
-    
-    console.log('avant fetch');
-    fetch('./script/send_score.php', createFetchOptions(formData))
-    .then (response => { return response.text() }) //then(result) //transform le body de la reponse en text classique   // json stringify c'est pour convertif un objec JS en string
-    console.log("après fetch")
-}
+
+
+    //*------------------------------- code pour envoyer les variables de score en BDD -------------------------------*//
+    function createFetchOptions(bodydata) {
+        return {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'  //format URL
+            },
+            body: new URLSearchParams(bodydata) //encoder mon objet JS bodydata au format URL annoncé dans le headers pour que le PHP le comprenen
+        }
+    }
+
+    function envoyerScore() {
+
+        // cette partie recupere les donnée en lisant le formulaire html
+        const formData = {};
+        // formData['score'] = finalScore;
+        formData['temps'] = timeEnd;
+        formData['coups'] = move;
+        console.log(formData);
+
+
+        console.log(formData);
+
+        console.log('avant fetch');
+        fetch('./script/send_score.php', createFetchOptions(formData))
+            .then(response => { return response.text() }) //then(result) //transform le body de la reponse en text classique   // json stringify c'est pour convertif un objec JS en string
+        console.log("après fetch")
+    }
 
 
 
