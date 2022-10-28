@@ -116,4 +116,3 @@
 
 <script src="https://kit.fontawesome.com/59083c418d.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="./script/memory.js"></script>
-<script src="./script/score.js"></script>

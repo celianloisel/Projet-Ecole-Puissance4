@@ -95,6 +95,8 @@ function card2(card) {
                     document.getElementById('display_infos_joueur').innerHTML = move;
                     document.getElementById('display_score_joueur').innerHTML = finalScore;
 
+                    envoyerScore()
+
                     // displayResult();
                 }
             }
@@ -182,7 +184,7 @@ function card2(card) {
 
 
     const time = document.querySelector('#time');
-
+    var finalScore = 10000;
     function startTimer() {
         if (timerGlobal == false) {
             let seconds = 0;
@@ -196,6 +198,7 @@ function card2(card) {
                 seconds_string = seconds > 9 ? `${seconds}` : `0${seconds}`;
                 minutes_string = minutes > 9 ? `${minutes}` : `0${minutes}`;
                 time.innerHTML = `${minutes_string}:${seconds_string}`;
+                finalScore = finalScore - 10;
             }, 1000);
 
             timerGlobal = true
@@ -209,7 +212,7 @@ function card2(card) {
     var closeModalButtons = document.querySelectorAll('[data-close-button]')
     var overlay = document.getElementById('overlay')
     var modal = document.getElementById('modal')
-    var finalScore = 10000;
+    // var finalScore = 10000 - (seconds_string + (minutes_string * 60));
 
     //faire apparaitre les variables de jeu dans la pop up
     //ne marche pas car les variable sont injecté dès que la page est chargé et non pas quand on a fini la partie
@@ -251,7 +254,7 @@ function card2(card) {
 
         // cette partie recupere les donnée en lisant le formulaire html
         const formData = {};
-        // formData['score'] = finalScore;
+        formData['score'] = finalScore;
         formData['temps'] = timeEnd;
         formData['coups'] = move;
         console.log(formData);
